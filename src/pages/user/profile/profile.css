@@ -1,0 +1,50 @@
+.container-user-profile .wrapper {
+  width: 100%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 1em 0.5em;
+  border-radius: 10px;
+  border: 2px dashed black;
+  gap: 1em;
+}
+
+.container-user-profile .wrapper > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-user-profile .wrapper .profile {
+  flex: 0.3;
+  border-radius: 50%;
+  padding: 1em;
+}
+
+.container-user-profile .wrapper .description .top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(51, 51, 51);
+}
+
+.container-user-profile .wrapper .description .top button {
+  border: none;
+  background-color: transparent;
+}
+
+.container-user-profile .wrapper .description .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.container-user-profile .wrapper .description .bottom .delete {
+  padding: 0.5em 1.5em;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: 900;
+}

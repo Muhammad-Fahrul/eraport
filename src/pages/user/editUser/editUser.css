@@ -1,0 +1,116 @@
+.container-user-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-user-edit .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.container-user-edit .wrapper .title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.container-user-edit .wrapper .title::before,
+.container-user-edit .wrapper .title::after {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.container-user-edit .wrapper .title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.container-user-edit .wrapper .title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.container-user-edit .wrapper div:nth-child(2) {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.container-user-edit .wrapper label {
+  position: relative;
+}
+
+.container-user-edit .wrapper label .input {
+  width: 100%;
+  padding: 10px 10px 20px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+.container-user-edit .wrapper label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.container-user-edit .wrapper label .input:focus + span,
+.container-user-edit .wrapper label .input:valid + span {
+  top: 35px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.container-user-edit .wrapper label .input:valid + span {
+  color: green;
+}
+
+.container-user-edit .wrapper .update {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: 0.3s ease;
+}
+
+.container-user-edit .wrapper .update:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,59 @@
+.container-raport-detail {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.377);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1em;
+}
+
+.container-raport-detail .wrapper {
+  width: 100%;
+  padding: 1em;
+  min-width: 250px;
+  min-height: 250px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5em;
+}
+
+.container-raport-detail .wrapper > * {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-raport-detail .wrapper div:nth-child(1) {
+  align-items: center;
+}
+
+.container-raport-detail .wrapper div:nth-child(2) {
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+
+.container-raport-detail .wrapper .success {
+  color: #25ae88;
+}
+
+.container-raport-detail .wrapper .failed {
+  color: rgb(255, 52, 52);
+}
+
+.container-raport-detail .wrapper .delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.container-raport-detail .wrapper .delete img {
+  width: 24px;
+  height: 24px;
+}

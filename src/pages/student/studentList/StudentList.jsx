@@ -1,0 +1,50 @@
+import './studentList.css';
+
+import { Link } from 'react-router-dom';
+
+import addIcon from '../../../assets/icons/add.svg';
+
+import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
+import { Student } from './components/Student.jsx';
+import Loader from '../../../components/loader/Loader.jsx';
+import Error from '../../../components/error/Error.jsx';
+
+import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
+
+const StudentList = () => {
+  const { data, isSuccess, isLoading, isError, error } = useGetStudentsQuery(
+    'studentList',
+    {
+      pollingInterval: 60000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    }
+  );
+
+  let content;
+  if (isLoading) {
+    return <Loader />;
+  } else if (isSuccess) {
+    const { ids } = data;
+    content = ids?.length ? (
+      ids.map((studentId) => <Student key={studentId} studentId={studentId} />)
+    ) : (
+      <h4>Belum ada siswa</h4>
+    );
+  } else if (isError) {
+    return <Error message={error.data?.message} />;
+  }
+  return (
+    <div className="container-students">
+      <ul className="students">{content}</ul>
+
+      <Link to="/newstudent">
+        <ButtonIcon text="NEW">
+          <img src={addIcon} />
+        </ButtonIcon>
+      </Link>
+    </div>
+  );
+};
+
+export default StudentList;

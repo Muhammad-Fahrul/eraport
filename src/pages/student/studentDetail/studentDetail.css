@@ -1,0 +1,101 @@
+.container-student-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.container-student-detail .wrapper {
+  width: 100%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 1em 0.5em;
+  border-radius: 10px;
+  border: 2px dashed black;
+  gap: 1em;
+}
+
+.container-student-detail .wrapper > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-student-detail .wrapper .profile {
+  flex: 0.3;
+  border-radius: 50%;
+  padding: 1em;
+}
+
+.container-student-detail .wrapper .description .top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(51, 51, 51);
+}
+
+.container-student-detail .wrapper .description .top button {
+  border: none;
+  background-color: transparent;
+}
+
+.container-student-detail .wrapper .description .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.container-student-detail .wrapper .description .bottom .delete {
+  padding: 0.5em 1.5em;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: 900;
+}
+.container-student-detail .stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+.container-student-detail .stats article {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  border-radius: 10px;
+  height: 90px;
+}
+
+.container-student-detail .stats article div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100% - 4px);
+  height: 80%;
+  background-color: white;
+  margin-bottom: 2px;
+  border-radius: 8px;
+}
+
+.container-student-detail .stats article div p {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.container-student-detail .stats article div p:last-child {
+  font-size: 2rem;
+}
+
+.container-student-detail .stats article:first-child {
+  background-color: rgb(124, 199, 12);
+  color: rgb(124, 199, 12);
+}
+
+.container-student-detail .stats article:last-child {
+  background-color: rgb(231, 38, 38);
+  color: rgb(231, 38, 38);
+}

@@ -1,0 +1,6 @@
+.students {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  text-transform: capitalize;
+}

@@ -1,0 +1,90 @@
+.container-raport {
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+.container-raport .top {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--night-rider);
+  padding: 0.5em 1em;
+  border: 2px solid transparent;
+}
+
+.container-raport .top .back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: #645bff;
+  color: white;
+  font-weight: 900;
+  font-size: 1.2rem;
+  border: none;
+}
+
+.container-raport .top .username {
+  font-size: 1.3rem;
+  border-bottom: 1px solid #645bff;
+}
+
+.container-raport .top .username span {
+  color: #645bff;
+}
+
+.container-raport .table-raport {
+  width: 100%;
+  margin-top: 2px;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+.container-raport .table-raport thead {
+  border-bottom: 1px solid black;
+}
+
+.container-raport .table-raport thead th:first-child {
+  border-left: none;
+}
+.container-raport .table-raport thead th:last-child {
+  border-right: none;
+}
+
+.container-raport .table-raport thead th {
+  font-weight: normal;
+  width: 70px;
+  color: var(--night-rider);
+  padding: 0.5em;
+}
+
+.container-raport .table-raport tbody td {
+  padding: 0.3em;
+  text-align: center;
+}
+
+.container-raport .table-raport tr:nth-child(even) {
+  background-color: var(--night-rider);
+  color: white;
+}
+
+.container-raport .table-raport .status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  margin-inline: auto;
+  border-radius: 100px;
+}
+
+.container-raport .table-raport .status.success {
+  background-color: greenyellow;
+}
+
+.container-raport .table-raport .status.fail {
+  background-color: rgb(245, 55, 55);
+}

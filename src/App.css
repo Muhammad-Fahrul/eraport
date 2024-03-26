@@ -1,0 +1,59 @@
+:root {
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  --primary-color: #645bff;
+  --secondary-color: #fff;
+  --hover-color: #111;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+}
+
+.container-global {
+  max-width: 400px;
+  position: relative;
+  padding: 0.5em;
+  height: 100vh;
+  margin-inline: auto;
+}
+
+/* top student and students page */
+.toggle-students-opt {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.toggle-students-opt > * {
+  flex: 1;
+}
+
+.toggle-students-opt button {
+  width: 100%;
+  padding: 1em;
+  border: 2px solid var(--ch-black);
+  border-radius: 10px;
+}
+
+.toggle-students-opt .active {
+  color: var(--af-white);
+  background-color: var(--eer-black);
+}
