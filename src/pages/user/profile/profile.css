@@ -6,9 +6,24 @@
   align-items: center;
   color: black;
   padding: 1em 0.5em;
+  border: 2px solid black;
   border-radius: 10px;
-  border: 2px dashed black;
+
   gap: 1em;
+}
+
+.container-user-profile .back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: #645bff;
+  color: white;
+  font-weight: 900;
+  font-size: 1.2rem;
+  border: none;
 }
 
 .container-user-profile .wrapper > * {
@@ -47,4 +62,58 @@
   color: white;
   border-radius: 5px;
   font-weight: 900;
+}
+
+.container-user-profile .container-raport {
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+.container-user-profile .stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+.container-user-profile .stats article {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  border-radius: 5px;
+  height: 90px;
+  background-color: var(--night-rider);
+}
+
+.container-user-profile .stats article div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100% - 4px);
+  height: 80%;
+  background-color: white;
+  margin-bottom: 2px;
+  border-radius: 3px;
+}
+
+.container-user-profile .stats article div p {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.container-user-profile .stats article div p:last-child {
+  font-size: 2rem;
+}
+
+.container-user-profile .stats article:first-child p:last-child {
+  color: rgb(214, 218, 5);
+}
+
+.container-user-profile .stats article:nth-child(2) p:last-child {
+  color: rgb(124, 199, 12);
+}
+
+.container-user-profile .stats article:last-child p:last-child {
+  color: rgb(231, 38, 38);
 }

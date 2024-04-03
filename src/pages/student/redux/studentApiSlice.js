@@ -57,18 +57,18 @@ export const {
   useGetStudentsQuery,
 } = studentApiSlice;
 
-export const selectStudentsResult =
-  studentApiSlice.endpoints.getStudents.select();
+// export const selectStudentsResult =
+//   studentApiSlice.endpoints.getStudents.select();
 
-const selectStudentsData = createSelector(
-  selectStudentsResult,
-  (studentResult) => studentResult.data
-);
+// const selectStudentsData = createSelector(
+//   selectStudentsResult,
+//   (studentResult) => studentResult.data
+// );
 
-export const {
-  selectAll: selectAllStudent,
-  selectById: selectStudentById,
-  selectIds: selectStudentIds,
-} = studentsAdapter.getSelectors(
-  (state) => selectStudentsData(state) ?? initialState
-);
+// export const {
+//   selectAll: selectAllStudent,
+//   selectById: selectStudentById,
+//   selectIds: selectStudentIds,
+// } = studentsAdapter.getSelectors(
+//   (state) => selectStudentsData(state) ?? initialState
+// );

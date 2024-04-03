@@ -1,22 +1,30 @@
 import './login.css';
 
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Loader from '../../../components/loader/Loader.jsx';
 
 import { useLoginMutation } from '../redux/authApiSlice.js';
-import { setCredentials } from '../redux/authSlice.js';
+import { selectIsLogin, setCredentials, setLogin } from '../redux/authSlice.js';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const location = useLocation();
 
+  const isLogin = useSelector(selectIsLogin);
+
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/');
+    }
+  }, [isLogin, navigate]);
 
   useEffect(() => {
     setErrMsg('');
@@ -33,6 +41,7 @@ const Login = () => {
           password,
         }).unwrap();
         dispatch(setCredentials(data));
+        dispatch(setLogin());
         navigate('/', { state: { from: location }, replace: true });
       } catch (err) {
         console.log(err);

@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 
 const Prefetch = () => {
   useEffect(() => {
-    console.log('prefetch');
     store.dispatch(
       studentApiSlice.util.prefetch('getStudents', 'studentList', {
         force: true,

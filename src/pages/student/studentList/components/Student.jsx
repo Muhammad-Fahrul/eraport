@@ -8,7 +8,7 @@ import bookIcon from '../../../../assets/icons/book.svg';
 
 import { useGetStudentsQuery } from '../../redux/studentApiSlice';
 
-const Student = ({ studentId }) => {
+const Student = ({ studentId, isMentor }) => {
   const navigate = useNavigate();
 
   const { student } = useGetStudentsQuery('studentList', {
@@ -24,19 +24,24 @@ const Student = ({ studentId }) => {
       state: { from: location },
     });
 
+  const handleToDetail = () => {
+    navigate(`/${student.username}`, {
+      state: { from: location },
+    });
+  };
+
   let content = (
     <li className="container-student">
       <div className="top">
-        <p
-          className="description"
-          onClick={() => navigate(`/students/${studentId}`)}
-        >
+        <p className="description" onClick={handleToDetail}>
           {student.username}
         </p>
       </div>
-      <button className="raport-btn" title="raport" onClick={handleToRaport}>
-        <img src={bookIcon} alt="raport" />
-      </button>
+      {isMentor && (
+        <button className="raport-btn" title="raport" onClick={handleToRaport}>
+          <img src={bookIcon} alt="raport" />
+        </button>
+      )}
     </li>
   );
 
@@ -45,6 +50,7 @@ const Student = ({ studentId }) => {
 
 Student.propTypes = {
   studentId: PropTypes.string.isRequired,
+  isMentor: PropTypes.bool.isRequired,
 };
 
 const memoizedStudent = memo(Student);

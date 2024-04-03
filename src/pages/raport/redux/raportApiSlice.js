@@ -19,14 +19,14 @@ export const raportApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: [{ type: 'Raport', id: 'LIST' }],
+      invalidatesTags: [{ type: 'Raport', id: 'LIST' }, 'User'],
     }),
     deleteRaport: builder.mutation({
       query: ({ id }) => ({
         url: `${RAPORT_URL}/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: [{ type: 'Raport', id: 'LIST' }],
+      invalidatesTags: [{ type: 'Raport', id: 'LIST' }, 'User'],
     }),
   }),
 });

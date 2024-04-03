@@ -23,8 +23,6 @@ const Profile = lazyLoad('pages/user/profile/Profile');
 const EditUser = lazyLoad('pages/user/editUser/EditUser');
 
 const RaportList = lazyLoad('pages/raport/raportList/RaportList');
-const StudentDetail = lazyLoad('pages/student/studentDetail/StudentDetail');
-
 
 function App() {
   const allRoles = [...Object.values(ROLES)];
@@ -43,11 +41,7 @@ function App() {
                   <Route path=":username/edit" element={<EditUser />} />
                   <Route path="students">
                     <Route index element={<StudentList />} />
-                    <Route path=":studentId" element={<StudentDetail />} />
                     <Route path=":username/raports" element={<RaportList />} />
-                  </Route>
-                  <Route element={<RequireAuth roles={[ROLES.mentor]} />}>
-                    <Route path="newstudent" element={<NewStudent />} />
                   </Route>
                 </Route>
               </Route>

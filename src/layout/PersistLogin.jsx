@@ -7,7 +7,7 @@ import { useRefreshMutation } from '../pages/auth/redux/authApiSlice';
 import { selectCurrentToken } from '../pages/auth/redux/authSlice';
 
 const PersistLogin = () => {
-  const token = useSelector((state) => selectCurrentToken(state));
+  const token = useSelector(selectCurrentToken);
   const effectRan = useRef(false);
   const navigate = useNavigate();
 
@@ -25,9 +25,7 @@ const PersistLogin = () => {
 
       const verifyRefreshToken = async () => {
         try {
-          //const response =
           await refresh();
-          //const { accessToken } = response.data
           setTrueSuccess(true);
         } catch (err) {
           console.error(err);

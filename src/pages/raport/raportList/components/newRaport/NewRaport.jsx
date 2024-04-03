@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { useAddNewRaportMutation } from '../../../redux/raportApiSlice';
-import Loader from '../../../../../components/loader/Loader';
 
 const NewRaport = ({ setScreenNR }) => {
   const { username } = useParams();
@@ -17,7 +16,7 @@ const NewRaport = ({ setScreenNR }) => {
   const [addNewRaport, { isLoading, isError, error }] =
     useAddNewRaportMutation();
 
-  const handleSubmit = async (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     try {
       await addNewRaport({
@@ -27,8 +26,8 @@ const NewRaport = ({ setScreenNR }) => {
         detail,
         username,
       }).unwrap();
-      alert(`berhasil ditambahkan`);
       setScreenNR(false);
+      alert(`berhasil ditambahkan`);
     } catch (err) {
       console.error(err?.data?.message || err.error);
     }
@@ -36,13 +35,12 @@ const NewRaport = ({ setScreenNR }) => {
 
   return (
     <div className="container-raport-new">
-      <form className="wrapper" onSubmit={handleSubmit}>
+      <form className="wrapper" onSubmit={handleAdd}>
         <span className="close" onClick={() => setScreenNR(false)}>
           x
         </span>
         <div style={{ textAlign: 'center' }}>
           <h3>New</h3>
-
           <p
             style={{
               opacity: isError ? 1 : 0,
@@ -99,9 +97,10 @@ const NewRaport = ({ setScreenNR }) => {
           />
         </div>
 
-        <button className="enter">Add</button>
+        <button className="enter" disabled={isLoading}>
+          Add
+        </button>
       </form>
-      {isLoading && <Loader />}
     </div>
   );
 };

@@ -3,11 +3,11 @@ import useAuth from '../hooks/useAuth';
 
 const RequireAuth = ({ roles }) => {
   const location = useLocation();
-  const { role } = useAuth();
+  const authUser = useAuth();
 
-  const content = roles.includes(role) ? (
+  const content = roles.includes(authUser.role) ? (
     <Outlet />
-  ) : !role ? (
+  ) : !authUser.role ? (
     <Navigate to="/login" state={{ from: location }} replace />
   ) : (
     <Navigate to="/notfound" state={{ from: location }} replace />
