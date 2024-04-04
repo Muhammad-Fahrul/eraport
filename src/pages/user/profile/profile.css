@@ -97,13 +97,13 @@
 }
 
 .container-user-profile .stats article div p {
-  font-size: 1.2rem;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
 .container-user-profile .stats article div p:last-child {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .container-user-profile .stats article:first-child p:last-child {

@@ -18,7 +18,6 @@
 .container-user-edit .wrapper .title {
   font-size: 28px;
   color: royalblue;
-  font-weight: 600;
   letter-spacing: -1px;
   position: relative;
   display: flex;
@@ -81,7 +80,6 @@
 .container-user-edit .wrapper label .input:valid + span {
   top: 35px;
   font-size: 0.7em;
-  font-weight: 600;
 }
 
 .container-user-edit .wrapper label .input:valid + span {

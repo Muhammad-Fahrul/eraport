@@ -30,7 +30,7 @@ const Login = () => {
     setErrMsg('');
   }, [username, password]);
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError }] = useLoginMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,49 +43,56 @@ const Login = () => {
         dispatch(setCredentials(data));
         dispatch(setLogin());
         navigate('/', { state: { from: location }, replace: true });
-      } catch (err) {
-        console.log(err);
-        if (!err) {
-          setErrMsg('No Server Response');
-        } else if (err.status === 400) {
-          setErrMsg(err.data.message);
-          console.log(errMsg);
-        } else if (err.status === 401) {
-          setErrMsg(err.data.message);
-        } else {
-          setErrMsg('Login Failed');
-        }
+      } catch (error) {
+        setErrMsg(error.data.message);
       }
     };
     getCred();
   };
 
   return (
-    <div className="wrapper-login">
-      <div className="title">
-        <p>Login</p>
-        <p className={`${errMsg ? 'err-alert' : 'offscreen'}`}>{errMsg}</p>
-      </div>
-      <form className="__form" autoComplete="off">
-        <input
-          className="__input"
-          name="username"
-          placeholder="Username"
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          className="__input"
-          name="password"
-          placeholder="Password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className="__btn" onClick={(e) => handleSubmit(e)}>
-          Lets go!
-        </button>
-      </form>
+    <div className="container-login">
       {isLoading && <Loader />}
+      <form onSubmit={handleSubmit} className="wrapper" autoComplete="off">
+        <div className="title" style={{ textAlign: 'center' }}>
+          <h1 style={{ fontSize: '1em' }}>Login</h1>
+          <p
+            style={{
+              opacity: isError ? 1 : 0,
+              color: 'red',
+              fontSize: '0.6rem',
+              width: '200px',
+              height: '10px',
+            }}
+          >
+            {errMsg}
+          </p>
+        </div>
+
+        <div className="inputBox">
+          <input
+            name="username"
+            type="text"
+            required="required"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <span>Username</span>
+        </div>
+
+        <div className="inputBox">
+          <input
+            name="password"
+            type="password"
+            required="required"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span>Password</span>
+        </div>
+
+        <button className="enter">Login</button>
+      </form>
     </div>
   );
 };

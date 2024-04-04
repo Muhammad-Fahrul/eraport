@@ -1,98 +1,96 @@
-.__form {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.container-login .wrapper {
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
+  background-color: white;
+  max-width: 350px;
+  flex-direction: column;
+  border-radius: 15px;
+  border-radius: 8px;
+  padding: 1em;
+  gap: 1em;
+  height: 50vh;
 }
 
-.wrapper-login .title {
-  margin: 20px 0 20px 0;
-  font-size: 25px;
-  font-weight: 900;
+.container-login .wrapper .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: x-large;
+  padding: 0;
+}
+.container-login .wrapper .inputBox span {
   text-align: center;
-  color: var(--main-color);
+  width: 105px;
 }
 
-.__input {
-  height: 40px;
-  border-radius: 5px;
-  border: 2px solid var(--main-color);
-  background-color: var(--bg-color);
-  -webkit-box-shadow: 4px 4px var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--font-color);
-  padding: 5px 10px;
+.container-login .wrapper .inputBox {
+  position: relative;
+  width: 200px;
+}
+
+.container-login .wrapper .inputBox input {
+  width: 100%;
+  padding: 10px;
   outline: none;
+  border: none;
+  color: #000;
+  font-size: 1em;
+  background: transparent;
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
 }
 
-.__input::-webkit-input-placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
-
-.__input::-moz-placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
-
-.__input:-ms-input-placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
-
-.__input::-ms-input-placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
-
-.__input::placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
-
-.__input:focus {
-  border: 2px solid var(--input-focus);
-}
-
-.__btn:active,
-.button-confirm:active {
-  -webkit-box-shadow: 0px 0px var(--main-color);
-  box-shadow: 0px 0px var(--main-color);
-  -webkit-transform: translate(3px, 3px);
-  -ms-transform: translate(3px, 3px);
-  transform: translate(3px, 3px);
-}
-
-.__btn {
-  margin: 20px 0 20px 0;
-  width: 120px;
-  height: 40px;
-  border-radius: 5px;
-  border: 2px solid var(--main-color);
-  background-color: var(--bg-color);
-  -webkit-box-shadow: 4px 4px var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--font-color);
-  cursor: pointer;
-}
-
-.err-alert {
-  color: red;
+.container-login .wrapper .inputBox span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
   font-size: 12px;
-  font-weight: 300;
+  color: #000;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
 }
 
-.offscreen {
-  opacity: 0;
+.container-login .wrapper .inputBox input:valid ~ span,
+.container-login .wrapper .inputBox input:focus ~ span {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+
+.container-login .wrapper .inputBox input:valid,
+.container-login .wrapper .inputBox input:focus {
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.container-login .wrapper .enter {
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
 }

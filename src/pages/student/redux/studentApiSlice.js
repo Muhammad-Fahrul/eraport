@@ -38,7 +38,7 @@ export const studentApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: [{ type: 'User', id: 'LIST' }],
+      invalidatesTags: [{ type: 'Student', id: 'LIST' }],
     }),
     deleteStudent: builder.mutation({
       query: ({ id }) => ({
@@ -46,7 +46,9 @@ export const studentApiSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         body: { id },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Student', id: arg.id },
+      ],
     }),
   }),
 });

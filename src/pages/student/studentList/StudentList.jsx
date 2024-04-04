@@ -16,7 +16,9 @@ import NewStudent from './components/newStudent/NewStudent.jsx';
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
+
   const authUser = useAuth();
+
   const { data, isSuccess, isLoading, isError, error } = useGetStudentsQuery(
     'studentList',
     {
@@ -60,11 +62,21 @@ const StudentList = () => {
     return <Error message={error.data?.message} />;
   }
 
+  const handleClose = (e) => {
+    if (e.target.className === 'container-student-new') {
+      setScreen(false);
+    }
+  };
+
   return (
     <div className="container-students">
       <ul className="students">{content}</ul>
 
-      {screen && <NewStudent setScreen={setScreen} />}
+      {screen && (
+        <div className="container-student-new" onClick={handleClose}>
+          <NewStudent setScreen={setScreen} />
+        </div>
+      )}
 
       <div onClick={() => setScreen(true)}>
         <ButtonIcon text="NEW">

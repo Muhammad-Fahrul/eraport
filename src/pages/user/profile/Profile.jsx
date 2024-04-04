@@ -127,7 +127,7 @@ const Profile = () => {
               <article>
                 <div>
                   <p>Poin</p>
-                  <p> </p>
+                  <p>-</p>
                 </div>
               </article>
               <article>

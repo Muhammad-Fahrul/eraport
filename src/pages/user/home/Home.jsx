@@ -25,10 +25,7 @@ const Home = () => {
       <div className="wrapper">
         <div>
           <h1>Welcome</h1>
-          <p>
-            Start
-            <strong> Your Journey</strong>
-          </p>
+          <p>Start Your Journey</p>
         </div>
         <Button url={`/${username}`} text="Let's Go" />
       </div>

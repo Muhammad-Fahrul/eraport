@@ -24,8 +24,9 @@ const EditUser = lazyLoad('pages/user/editUser/EditUser');
 
 const RaportList = lazyLoad('pages/raport/raportList/RaportList');
 
+const allRoles = [...Object.values(ROLES)];
+
 function App() {
-  const allRoles = [...Object.values(ROLES)];
   return (
     <Provider store={store}>
       <Router>

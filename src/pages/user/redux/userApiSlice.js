@@ -14,13 +14,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
       query: (username) => `${USERS_URL}/${username}`,
       providesTags: ['User'],
     }),
-    // updateUser: builder.mutation({
-    //   query: (data) => ({
-    //     url: `${USERS_URL}/profile`,
-    //     method: 'PUT',
-    //     body: data,
-    //   }),
-    // }),
+    updateUser: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: ['User'],
+    }),
     // getRaport: builder.query({
     //   query: ({ studentId }) => `${USERS_URL}/raports/${studentId}`,
     //   providesTags: (result, error, arg) => [
@@ -44,4 +45,5 @@ export const userApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useRegisterMutation, useGetUserQuery } = userApiSlice;
+export const { useRegisterMutation, useGetUserQuery, useUpdateUserMutation } =
+  userApiSlice;

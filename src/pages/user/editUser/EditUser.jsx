@@ -2,14 +2,20 @@ import './editUser.css';
 
 import { useState } from 'react';
 
+import { useUpdateUserMutation } from '../redux/userApiSlice';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../../../components/loader/Loader';
+
 const EditUser = () => {
   const [state, setState] = useState({
-    firstname: '',
-    lastname: '',
     phone: '',
-    oldpassword: '',
-    newpassword: '',
+    oldPassword: '',
+    newPassword: '',
   });
+  const navigate = useNavigate();
+
+  const authUser = useAuth();
 
   const handleChange = (e) => {
     const target = e.target;
@@ -18,58 +24,28 @@ const EditUser = () => {
     setState((prev) => ({ ...prev, [name]: value }));
   };
 
-  //   const [updateUser, { isLoading, isError, error }] = useUpdateUserMutation();
+  const [updateUser, { isLoading, isError, error }] = useUpdateUserMutation();
 
-  //   const submitHandler = async (e) => {
-  //     e.preventDefault();
-  //     if (password !== conPassword) {
-  //       alert("Passwords does not match");
-  //     } else {
-  //       try {
-  //         const res = await updateUser({
-  //           _id: userInfo._id,
-  //           fullname,
-  //           nickname,
-  //           phoneNumber,
-  //           password,
-  //         }).unwrap();
-  //         dispacth(setCredentials(res));
-  //         alert("Profile updated successfully");
-  //         navigate(`/me/${userInfo._id}`);
-  //       } catch (err) {
-  //         alert(err?.data?.message || err.error);
-  //       }
-  //     }
-  //   };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      await updateUser({
+        phone: state.phone,
+        oldPassword: state.oldPassword,
+        newPassword: state.newPassword,
+      }).unwrap();
+      alert('Profile updated successfully');
+      navigate(`/${authUser.username}`);
+    } catch (err) {
+      alert(err?.data?.message || err.error);
+    }
+  };
 
   return (
     <div className="container-user-edit">
-      <form className="wrapper" autoComplete="off">
+      <form className="wrapper" autoComplete="off" onSubmit={handleUpdate}>
         <h1 className="title">Update Profile</h1>
-        {/* {isError && <h3>{error.data.message}</h3>} */}
-        <div>
-          <label>
-            <input
-              name="firstname"
-              type="text"
-              className="input"
-              value={state.firstname}
-              onChange={handleChange}
-            />
-            <span>Fullname</span>
-          </label>
-
-          <label>
-            <input
-              name="lastname"
-              type="text"
-              className="input"
-              value={state.lastname}
-              onChange={handleChange}
-            />
-            <span>Nickname</span>
-          </label>
-        </div>
+        {isError && <h3>{error.data.message}</h3>}
 
         <label>
           <input
@@ -84,10 +60,10 @@ const EditUser = () => {
 
         <label>
           <input
-            name="oldpassword"
+            name="oldPassword"
             type="text"
             className="input"
-            value={state.oldpassword}
+            value={state.oldPassword}
             onChange={handleChange}
           />
           <span>Old Password</span>
@@ -95,17 +71,17 @@ const EditUser = () => {
 
         <label>
           <input
-            name="newpassword"
+            name="newPassword"
             type="text"
             className="input"
-            value={state.newpassword}
+            value={state.newPassword}
             onChange={handleChange}
           />
           <span>New Password</span>
         </label>
 
         <button className="update">Update</button>
-        {/* {isLoading && <Loader />} */}
+        {isLoading && <Loader />}
       </form>
     </div>
   );
