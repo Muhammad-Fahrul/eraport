@@ -1,7 +1,5 @@
 import './studentList.css';
 
-import { Link } from 'react-router-dom';
-
 import addIcon from '../../../assets/icons/add.svg';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
@@ -11,8 +9,8 @@ import Error from '../../../components/error/Error.jsx';
 
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
-import { useState } from 'react';
-import NewStudent from './components/newStudent/NewStudent.jsx';
+import { lazy, useState } from 'react';
+const NewStudent = lazy(() => import('./components/newStudent/NewStudent.jsx'));
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);

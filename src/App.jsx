@@ -15,12 +15,11 @@ import Prefetch from './layout/Prefetch.jsx';
 const NotFound = lazyLoad('pages/public/notFound/NotFound');
 const Login = lazyLoad('pages/auth/login/Login');
 
-const StudentList = lazyLoad('pages/student/studentList/StudentList');
-
 const Home = lazyLoad('pages/user/home/Home');
 const Profile = lazyLoad('pages/user/profile/Profile');
 const EditUser = lazyLoad('pages/user/editUser/EditUser');
 
+const StudentList = lazyLoad('pages/student/studentList/StudentList');
 const RaportList = lazyLoad('pages/raport/raportList/RaportList');
 
 const allRoles = [...Object.values(ROLES)];

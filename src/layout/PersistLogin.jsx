@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Loader from '../components/loader/Loader';
@@ -10,7 +10,6 @@ import Button from '../components/button/Button';
 const PersistLogin = () => {
   const token = useSelector(selectCurrentToken);
   const effectRan = useRef(false);
-  const navigate = useNavigate();
 
   const [trueSuccess, setTrueSuccess] = useState(false);
 
