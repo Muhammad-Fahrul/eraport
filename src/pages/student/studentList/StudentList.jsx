@@ -2,6 +2,8 @@ import './studentList.css';
 
 import addIcon from '../../../assets/icons/add.svg';
 
+import { useState } from 'react';
+
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
 import { Student } from './components/Student.jsx';
 import Loader from '../../../components/loader/Loader.jsx';
@@ -9,7 +11,6 @@ import Error from '../../../components/error/Error.jsx';
 
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
-import { useState } from 'react';
 import NewStudent from '../../../components/newStudent/NewStudent.jsx';
 
 const StudentList = () => {
