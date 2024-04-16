@@ -19,9 +19,6 @@ const Home = lazyLoad('pages/user/home/Home');
 const Profile = lazyLoad('pages/user/profile/Profile');
 const EditUser = lazyLoad('pages/user/editUser/EditUser');
 
-// const StudentList = lazyLoad('pages/student/studentList/StudentList');
-// const RaportList = lazyLoad('pages/raport/raportList/RaportList');
-
 const allRoles = [...Object.values(ROLES)];
 
 function App() {
@@ -38,10 +35,6 @@ function App() {
                   <Route index element={<Home />} />
                   <Route path=":username" element={<Profile />} />
                   <Route path=":username/edit" element={<EditUser />} />
-                  {/* <Route path="students">
-                    <Route index element={<StudentList />} />
-                    <Route path=":username/raports" element={<RaportList />} />
-                  </Route> */}
                 </Route>
               </Route>
             </Route>
