@@ -15,7 +15,6 @@ import Prefetch from './layout/Prefetch.jsx';
 const NotFound = lazyLoad('pages/public/notFound/NotFound');
 const Login = lazyLoad('pages/auth/login/Login');
 
-const NewStudent = lazyLoad('pages/student/newStudent/NewStudent');
 const StudentList = lazyLoad('pages/student/studentList/StudentList');
 
 const Home = lazyLoad('pages/user/home/Home');
