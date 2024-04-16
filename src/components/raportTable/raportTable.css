@@ -1,0 +1,67 @@
+.container-table-raport {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-height: 395px;
+  overflow: hidden;
+}
+
+.container-table-raport .table-raport {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.container-table-raport .table-raport thead {
+  background-color: var(--primary-color);
+}
+
+.container-table-raport .table-raport thead th {
+  color: white;
+  font-weight: normal;
+  width: 70px;
+  padding: 0.5em;
+}
+
+.container-table-raport .table-raport tbody td {
+  text-align: center;
+}
+
+.container-table-raport .table-raport tr {
+  height: 35px;
+}
+
+.container-table-raport .table-raport tr:nth-child(even) {
+  background-color: rgb(207, 207, 207);
+}
+
+.container-table-raport .table-raport .status {
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  margin-inline: auto;
+  border-radius: 100px;
+}
+
+.container-table-raport .table-raport .status.success {
+  background-color: greenyellow;
+}
+
+.container-table-raport .table-raport .status.fail {
+  background-color: rgb(245, 55, 55);
+}
+
+.container-table-raport .table-raport tr td:last-child img {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+}
+
+.paging {
+  display: flex;
+  justify-content: center;
+  gap: 0.3em;
+  padding: 0.3em;
+  background-color: var(--primary-color);
+}
