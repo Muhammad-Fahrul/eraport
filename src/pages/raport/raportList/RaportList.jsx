@@ -4,12 +4,14 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import addIcon from '../../../assets/icons/add.svg';
 
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import ButtonIcon from '../../../components/button/ButtonIcon';
 import NewRaport from './components/newRaport/NewRaport';
 
-import RaportTable from '../../../components/raportTable/RaportTable';
+const RaportTable = lazy(() =>
+  import('../../../components/raportTable/RaportTable')
+);
 
 const RaportList = () => {
   const navigate = useNavigate();
