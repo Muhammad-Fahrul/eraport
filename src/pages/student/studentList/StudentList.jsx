@@ -9,8 +9,8 @@ import Error from '../../../components/error/Error.jsx';
 
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
-import { lazy, useState } from 'react';
-const NewStudent = lazy(() => import('./components/newStudent/NewStudent.jsx'));
+import { useState } from 'react';
+import NewStudent from '../../../components/newStudent/NewStudent.jsx';
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
