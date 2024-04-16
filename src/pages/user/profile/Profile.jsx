@@ -5,11 +5,11 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Loader from '../../../components/loader/Loader';
 import Button from '../../../components/button/Button';
+import RaportTable from '../../../components/raportTable/RaportTable.jsx';
 
 import useAuth from '../../../hooks/useAuth';
 import { useGetUserQuery } from '../redux/userApiSlice';
 import { useLogoutMutation } from '../../auth/redux/authApiSlice';
-import RaportTable from './components/raportTable/RaportTable';
 import { useDeleteStudentMutation } from '../../student/redux/studentApiSlice';
 
 const Profile = () => {

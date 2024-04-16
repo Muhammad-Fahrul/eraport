@@ -7,9 +7,9 @@ import addIcon from '../../../assets/icons/add.svg';
 import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import ButtonIcon from '../../../components/button/ButtonIcon';
-import NewRaport from '../../../components/newRaport/NewRaport';
 
-import RaportTable from '../.';
+import NewRaport from '../../../components/newRaport/NewRaport.jsx';
+import RaportTable from '../../../components/raportTable/RaportTable.jsx';
 
 const RaportList = () => {
   const navigate = useNavigate();
