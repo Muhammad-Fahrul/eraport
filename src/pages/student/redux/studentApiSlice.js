@@ -1,9 +1,11 @@
-import { createSelector, createEntityAdapter } from '@reduxjs/toolkit';
+import { createEntityAdapter } from '@reduxjs/toolkit';
 import { apiSlice } from '../../../app/api/apiSlice';
 
 const STUDENT_URL = '/api/students';
 
-const studentsAdapter = createEntityAdapter({});
+const studentsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => (a.poin < b.poin ? 1 : -1),
+});
 
 const initialState = studentsAdapter.getInitialState();
 

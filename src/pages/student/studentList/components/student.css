@@ -36,6 +36,6 @@
   outline: none;
   border: none;
   background-color: transparent;
-  border: 0.3px solid #645bff;
   border-radius: 100px;
+  font-size: 1.1rem;
 }

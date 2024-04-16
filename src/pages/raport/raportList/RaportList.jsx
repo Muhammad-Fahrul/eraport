@@ -27,7 +27,7 @@ const RaportList = () => {
           <span>{username}</span> record
         </h1>
         <button className="back" onClick={() => navigate(previousPath)}>
-          <p>&lt;</p>
+          <i className="fa-solid fa-arrow-left"></i>
         </button>
       </div>
 

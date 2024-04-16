@@ -2,6 +2,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useSelector } from 'react-redux';
 
 import { selectCurrentToken } from '../pages/auth/redux/authSlice';
+import { useGetUserQuery } from '../pages/user/redux/userApiSlice';
 
 const useAuth = () => {
   const token = useSelector(selectCurrentToken);
@@ -11,7 +12,7 @@ const useAuth = () => {
 
   if (token) {
     const decoded = jwtDecode(token);
-    const { username, role } = decoded.UserInfo;
+    const { username, role, urlImg } = decoded.UserInfo;
 
     isMentor = role === 'mentor';
     isStudent = role === 'student';
@@ -19,7 +20,7 @@ const useAuth = () => {
     if (isMentor) status = 'mentor';
     if (isStudent) status = 'student';
 
-    return { username, role, status, isMentor, isStudent };
+    return { username, role, status, isMentor, isStudent, urlImg };
   }
 
   return { username: '', role: null, isMentor, isStudent, status };

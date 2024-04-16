@@ -31,7 +31,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/" element={<MainLayout />}>
+          <Route path="/eraport" element={<MainLayout />}>
             <Route path="login" element={<Login />} />
 
             <Route element={<PersistLogin />}>

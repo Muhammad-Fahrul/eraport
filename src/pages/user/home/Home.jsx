@@ -27,7 +27,7 @@ const Home = () => {
           <h1>Welcome</h1>
           <p>Start Your Journey</p>
         </div>
-        <Button url={`/${username}`} text="Let's Go" />
+        <Button url={`${username}`} text="Let's Go" />
       </div>
     </div>
   );

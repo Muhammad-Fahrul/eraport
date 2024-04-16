@@ -7,7 +7,7 @@
   border: 0;
   border-radius: 10px;
   color: var(--secondary-color);
-  padding: 0.8em 1.8em;
+  padding: 0.6em 1.4em;
   background: var(--primary-color);
   display: flex;
   transition: 0.2s background;

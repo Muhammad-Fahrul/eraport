@@ -38,7 +38,11 @@
   width: 30px;
   height: 30px;
   border-radius: 100px;
-  border: 1px dotted rgba(0, 0, 0, 0.322);
+  overflow: hidden;
+}
+
+.container-navbar .right .nav-btns .profile img {
+  width: 100%;
 }
 
 /* .navigation-card {

@@ -1,57 +1,51 @@
 .container-user-edit {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding: 0 2em;
 }
 
 .container-user-edit .wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
-  max-width: 350px;
   background-color: #fff;
-  padding: 20px;
   border-radius: 20px;
   position: relative;
 }
 
-.container-user-edit .wrapper .title {
-  font-size: 28px;
-  color: royalblue;
-  letter-spacing: -1px;
-  position: relative;
+.container-user-edit .form-profile-photo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
+  margin-bottom: 0.5em;
 }
 
-.container-user-edit .wrapper .title::before,
-.container-user-edit .wrapper .title::after {
-  position: absolute;
-  content: '';
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 0px;
-  background-color: royalblue;
-}
-
-.container-user-edit .wrapper .title::before {
-  width: 18px;
-  height: 18px;
-  background-color: royalblue;
-}
-
-.container-user-edit .wrapper .title::after {
-  width: 18px;
-  height: 18px;
-  animation: pulse 1s linear infinite;
-}
-
-.container-user-edit .wrapper div:nth-child(2) {
+.container-user-edit .form-profile-photo div {
   display: flex;
-  width: 100%;
-  gap: 6px;
+  flex-direction: column;
+}
+
+.container-user-edit .form-profile-photo div input {
+  width: 200px;
+}
+
+.container-user-edit .form-profile-photo button {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 4px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  transform: 0.3s ease;
+}
+
+.container-user-edit .wrapper .title {
+  color: royalblue;
+  position: relative;
+  text-align: center;
 }
 
 .container-user-edit .wrapper label {

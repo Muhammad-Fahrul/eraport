@@ -14,15 +14,11 @@
 }
 
 .container-raport .top .back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 30px;
   height: 30px;
   border-radius: 100px;
-  background-color: #645bff;
+  background-color: var(--night-rider);
   color: white;
-  font-weight: 900;
   font-size: 1.2rem;
   border: none;
 }

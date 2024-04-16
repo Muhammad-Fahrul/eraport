@@ -10,13 +10,13 @@ import useScroll from '../../hooks/useScroll';
 
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
-  const { username } = useAuth();
+  const { username, urlImg } = useAuth();
   const height = useScroll();
   return (
     <div className={`container-navbar ${height >= 10 ? 'shadow' : ''}`}>
       <div className="wrapper">
         <div className="left">
-          <Link to="/">
+          <Link to="/eraport">
             <h1>
               R<span style={{ fontSize: '1rem' }}>aport</span>
             </h1>
@@ -25,9 +25,9 @@ const Navbar = () => {
         <div className="right">
           {token && (
             <div className="nav-btns">
-              <Link to={`/${username}`}>
+              <Link to={`${username}`}>
                 <span className="profile">
-                  <img src={profileIcon} alt={username} />
+                  <img src={urlImg || profileIcon} alt={username} />
                 </span>
               </Link>
             </div>

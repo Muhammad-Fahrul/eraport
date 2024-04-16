@@ -4,8 +4,6 @@ import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import bookIcon from '../../../../assets/icons/book.svg';
-
 import { useGetStudentsQuery } from '../../redux/studentApiSlice';
 
 const Student = ({ studentId, isMentor }) => {
@@ -20,12 +18,12 @@ const Student = ({ studentId, isMentor }) => {
   const location = useLocation();
 
   const handleToRaport = () =>
-    navigate(`/students/${student.username}/raports`, {
+    navigate(`${student.username}/raports`, {
       state: { from: location },
     });
 
   const handleToDetail = () => {
-    navigate(`/${student.username}`, {
+    navigate(`/eraport/${student.username}`, {
       state: { from: location },
     });
   };
@@ -37,10 +35,14 @@ const Student = ({ studentId, isMentor }) => {
           {student.username}
         </p>
       </div>
-      {isMentor && (
+      {isMentor ? (
         <button className="raport-btn" title="raport" onClick={handleToRaport}>
-          <img src={bookIcon} alt="raport" />
+          <i className="fa-solid fa-book-bookmark"></i>
         </button>
+      ) : (
+        <div className="raport-btn">
+          <h3>{student.poin}</h3>
+        </div>
       )}
     </li>
   );

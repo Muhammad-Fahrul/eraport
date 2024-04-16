@@ -1,7 +1,5 @@
 import './profile.css';
 import profile from '../../../assets/icons/user.svg';
-import logoutIcon from '../../../assets/icons/logout.svg';
-import editIcon from '../../../assets/icons/settings.svg';
 
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
@@ -11,8 +9,8 @@ import Button from '../../../components/button/Button';
 import useAuth from '../../../hooks/useAuth';
 import { useGetUserQuery } from '../redux/userApiSlice';
 import { useLogoutMutation } from '../../auth/redux/authApiSlice';
-import NotFound from '../../public/notFound/NotFound';
 import RaportTable from '../../../components/raportTable/RaportTable';
+import { useDeleteStudentMutation } from '../../student/redux/studentApiSlice';
 
 const Profile = () => {
   const authUser = useAuth();
@@ -30,15 +28,18 @@ const Profile = () => {
     error,
   } = useGetUserQuery(username);
 
-  const [logout, { isLoading: iLLogout, isError: iELogout }] =
+  const [deleteStudent, { isLoading: iLD, isError: iED, error: eD }] =
+    useDeleteStudentMutation();
+
+  const [logout, { isLoading: iLL, isError: iEL, error: eL }] =
     useLogoutMutation();
 
-  const logoutHandler = () => {
+  const handleLogout = () => {
     const removeCred = async () => {
       try {
         if (confirm('anda yakin ingin keluar?')) {
           await logout().unwrap();
-          navigate('/login');
+          navigate('/eraport/login');
         }
       } catch (err) {
         console.error(err);
@@ -47,28 +48,49 @@ const Profile = () => {
     removeCred();
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    if (confirm(`anda yakin ingin menghapus ${userDisplayed.username}?`)) {
+      try {
+        await deleteStudent({ id: userDisplayed._id });
+        navigate(previousPath, { replace: true });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   let content;
 
-  if (isLoading) {
+  let errorMsg = '';
+
+  if (isLoading || iLL || iLD) {
     return <Loader />;
   } else if (isSuccess) {
     const buttonAuthUser = userDisplayed.username === authUser.username && (
       <div>
-        <button onClick={() => navigate(`/${authUser.username}/edit`)}>
-          <img title="edit" src={editIcon} alt="" />
+        <button onClick={() => navigate(`edit`, { state: { from: location } })}>
+          <i className="fa-solid fa-gear"></i>
         </button>
-        <button onClick={logoutHandler}>
-          <img title="logout" src={logoutIcon} alt="" />
+        <button onClick={handleLogout}>
+          <i className="fa-solid fa-right-from-bracket"></i>
         </button>
       </div>
     );
 
     const button = userDisplayed.username === authUser.username && (
       <Button
-        url="/students"
+        url="/eraport/students"
         text={authUser.isMentor ? 'Students' : 'Friends'}
       />
     );
+
+    const buttonDeleteStudent = authUser.role === 'mentor' &&
+      userDisplayed.username !== authUser.username && (
+        <button className="button-delete-student" onClick={handleDelete}>
+          delete
+        </button>
+      );
 
     content = (
       <div className="description">
@@ -77,22 +99,47 @@ const Profile = () => {
           {buttonAuthUser}
         </div>
         <div className="bottom">
-          <p>{userDisplayed.role}</p>
-          <p>{userDisplayed.username}</p>
-          <p>{userDisplayed.phone}</p>
-          {button}
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  <i className="fa-solid fa-user-tie"></i>
+                </th>
+                <td>{userDisplayed.role}</td>
+              </tr>
+              <tr>
+                <th>
+                  <i className="fa-solid fa-signature"></i>
+                </th>
+                <td>{userDisplayed.username}</td>
+              </tr>
+              <tr>
+                <th>
+                  <i className="fa-solid fa-phone"></i>
+                </th>
+                <td>{userDisplayed.phone}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="button-profile">{button || buttonDeleteStudent}</div>
         </div>
       </div>
     );
-  } else if (isError) {
-    if (error.status === 400) {
-      return <NotFound />;
+  } else if (isError || iEL || iLD) {
+    if (isError) {
+      errorMsg = error.data.message;
+    } else if (iEL) {
+      errorMsg = eL.data.message;
+    } else if (iED) {
+      errorMsg = eD.data.message;
+    } else {
+      return <h1>Error</h1>;
     }
-    return <h1>{error.data.message}</h1>;
   }
 
   return (
     <div className="container-user-profile">
+      {errorMsg && <h1>{errorMsg}</h1>}
       {authUser.username !== username && (
         <div
           style={{
@@ -109,13 +156,16 @@ const Profile = () => {
             className="back"
             onClick={() => navigate(previousPath, { replace: true })}
           >
-            <p>&lt;</p>
+            <i className="fa-solid fa-arrow-left"></i>
           </button>
         </div>
       )}
       <div className="wrapper">
         <div className="profile">
-          <img src={profile} alt="error" />
+          <img
+            className="img-profile"
+            src={userDisplayed.urlImgProfile || profile}
+          />
         </div>
         {content}
       </div>
@@ -127,7 +177,7 @@ const Profile = () => {
               <article>
                 <div>
                   <p>Poin</p>
-                  <p>-</p>
+                  <p>{userDisplayed.poin}</p>
                 </div>
               </article>
               <article>
@@ -152,8 +202,6 @@ const Profile = () => {
           )}
         </>
       )}
-      {iELogout && <h1>Gagal Keluar</h1>}
-      {iLLogout && <Loader />}
     </div>
   );
 };
