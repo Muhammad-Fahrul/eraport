@@ -5,8 +5,8 @@ import addIcon from '../../../assets/icons/add.svg';
 import { useState } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
-import { Student } from './components/Student.jsx';
-import NewStudent from './components/NewStudent';
+import { Student } from './components/Student';
+import { NewStudent } from './components/NewStudent';
 
 import Loader from '../../../components/loader/Loader.jsx';
 import Error from '../../../components/error/Error.jsx';
