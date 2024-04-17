@@ -6,13 +6,13 @@ import { useState } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
 import { Student } from './components/Student.jsx';
+import NewStudent from './components/NewStudent';
+
 import Loader from '../../../components/loader/Loader.jsx';
 import Error from '../../../components/error/Error.jsx';
 
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
-
-import { NewStudent } from './components/NewStudent.jsx';
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
