@@ -2,7 +2,7 @@ import './studentList.css';
 
 import addIcon from '../../../assets/icons/add.svg';
 
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
 import { Student } from './components/Student.jsx';
@@ -11,7 +11,8 @@ import Error from '../../../components/error/Error.jsx';
 
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
-import NewStudent from '../../../components/newStudent/NewStudent.jsx';
+
+const NewStudent = lazy(() => import('./components/newStudent/NewStudent'));
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
