@@ -3,12 +3,14 @@ import './newStudent.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useAddNewStudentMutation } from '../../../redux/studentApiSlice';
+import Loader from '../../../../../components/loader/Loader';
 
 const NewStudent = ({ setScreen }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [addNewStudent, { isError, error }] = useAddNewStudentMutation();
+  const [addNewStudent, { isLoading, isError, error }] =
+    useAddNewStudentMutation();
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ const NewStudent = ({ setScreen }) => {
 
   return (
     <>
+      {Loader && isLoading}
       <form onSubmit={(e) => handleAdd(e)} className="wrapper">
         <div className="title" style={{ textAlign: 'center' }}>
           <h1 style={{ fontSize: '1em' }}>New Student</h1>
