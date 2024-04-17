@@ -2,7 +2,7 @@ import './newStudent.css';
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useAddNewStudentMutation } from '../../redux/studentApiSlice';
+import { useAddNewStudentMutation } from '../../../redux/studentApiSlice';
 
 const NewStudent = ({ setScreen }) => {
   const [username, setUsername] = useState('');

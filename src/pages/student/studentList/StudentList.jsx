@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
 import { Student } from './components/Student';
-import { NewStudent } from './components/NewStudent';
+import { NewStudent } from './components/newStudent/NewStudent.jsx';
 
 import Loader from '../../../components/loader/Loader.jsx';
 import Error from '../../../components/error/Error.jsx';
