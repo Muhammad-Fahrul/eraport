@@ -12,7 +12,7 @@ import Error from '../../../components/error/Error.jsx';
 import { useGetStudentsQuery } from '../redux/studentApiSlice.js';
 import useAuth from '../../../hooks/useAuth.js';
 
-const NewStudent = lazy(() => import('./components/newStudent/NewStudent'));
+const NewStudent = lazy(() => import('./components/newStudent/NewStudent.jsx'));
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
