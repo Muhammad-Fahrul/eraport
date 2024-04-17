@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { useGetStudentsQuery } from '../../redux/studentApiSlice';
+import { useGetStudentsQuery } from '../../../redux/studentApiSlice';
 
 const Student = ({ studentId, isMentor }) => {
   const navigate = useNavigate();

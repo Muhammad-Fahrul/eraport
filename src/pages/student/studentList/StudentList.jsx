@@ -5,7 +5,7 @@ import addIcon from '../../../assets/icons/add.svg';
 import { useState } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
-import { Student } from './components/Student';
+import { Student } from './components/student/Student.jsx';
 import { NewStudent } from './components/newStudent/NewStudent.jsx';
 
 import Loader from '../../../components/loader/Loader.jsx';

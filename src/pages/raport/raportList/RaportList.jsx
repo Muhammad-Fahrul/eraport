@@ -8,8 +8,8 @@ import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import ButtonIcon from '../../../components/button/ButtonIcon';
 
-import NewRaport from '../../../components/newRaport/NewRaport.jsx';
 import RaportTable from '../../../components/raportTable/RaportTable.jsx';
+import { NewRaport } from './components/newRaport/NewRaport.jsx';
 
 const RaportList = () => {
   const navigate = useNavigate();
