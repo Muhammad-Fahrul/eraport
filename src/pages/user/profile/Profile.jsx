@@ -9,7 +9,6 @@ import RaportTable from '../../../components/raportTable/RaportTable.jsx';
 
 import useAuth from '../../../hooks/useAuth';
 import { useGetUserQuery } from '../redux/userApiSlice';
-import { useLogoutMutation } from '../../auth/redux/authApiSlice';
 import { useDeleteStudentMutation } from '../../student/redux/studentApiSlice';
 import { useEffect } from 'react';
 
@@ -29,33 +28,16 @@ const Profile = () => {
     error,
   } = useGetUserQuery(username);
 
-  const [logout, { isSuccess: iSLG, isLoading: iLL, isError: iEL, error: eL }] =
-    useLogoutMutation();
-
   const [
     deleteStudent,
     { isSuccess: iSD, isLoading: iLD, isError: iED, error: eD },
   ] = useDeleteStudentMutation();
 
   useEffect(() => {
-    if (iSLG) {
-      navigate('/eraport/login');
-      console.log('success');
-    } else if (iSD) {
+    if (iSD) {
       navigate(previousPath, { replace: true });
     }
-  }, [iSLG, iSD, previousPath, navigate]);
-
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    if (confirm(`anda yakin ingin keluar`)) {
-      try {
-        await logout().unwrap();
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
+  }, [iSD, previousPath, navigate]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -79,9 +61,6 @@ const Profile = () => {
       <div>
         <button onClick={() => navigate(`edit`, { state: { from: location } })}>
           <i className="fa-solid fa-gear"></i>
-        </button>
-        <button onClick={handleLogout}>
-          <i className="fa-solid fa-right-from-bracket"></i>
         </button>
       </div>
     );
@@ -133,19 +112,17 @@ const Profile = () => {
         </div>
       </div>
     );
-  } else if (isError || iEL || iLD) {
-    if (iEL) {
-      errorMsg = eL.data.message;
-    } else if (iED) {
+  } else if (isError || iLD) {
+    if (iED) {
       errorMsg = eD.data.message;
     } else {
-      return <h1>Error</h1>;
+      return <h1>{error.data.message}</h1>;
     }
   }
 
   return (
     <div className="container-user-profile">
-      {(iLL || iLD) && <Loader />}
+      {iLD && <Loader />}
       {errorMsg && <h1>{errorMsg}</h1>}
       {authUser.username !== username && (
         <div
