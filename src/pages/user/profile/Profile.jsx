@@ -37,10 +37,8 @@ const Profile = () => {
   const handleLogout = () => {
     const removeCred = async () => {
       try {
-        if (confirm('anda yakin ingin keluar?')) {
-          await logout().unwrap();
-          navigate('/eraport/login');
-        }
+        await logout().unwrap();
+        navigate('/eraport/login');
       } catch (err) {
         console.error(err);
       }
