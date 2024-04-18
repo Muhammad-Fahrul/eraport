@@ -11,6 +11,7 @@ import useAuth from '../../../hooks/useAuth';
 import { useGetUserQuery } from '../redux/userApiSlice';
 import { useLogoutMutation } from '../../auth/redux/authApiSlice';
 import { useDeleteStudentMutation } from '../../student/redux/studentApiSlice';
+import { useEffect } from 'react';
 
 const Profile = () => {
   const authUser = useAuth();
@@ -28,22 +29,32 @@ const Profile = () => {
     error,
   } = useGetUserQuery(username);
 
-  const [deleteStudent, { isLoading: iLD, isError: iED, error: eD }] =
-    useDeleteStudentMutation();
-
-  const [logout, { isLoading: iLL, isError: iEL, error: eL }] =
+  const [logout, { isSuccess: iSLG, isLoading: iLL, isError: iEL, error: eL }] =
     useLogoutMutation();
 
-  const handleLogout = () => {
-    const removeCred = async () => {
+  const [
+    deleteStudent,
+    { isSuccess: iSD, isLoading: iLD, isError: iED, error: eD },
+  ] = useDeleteStudentMutation();
+
+  useEffect(() => {
+    if (iSLG) {
+      navigate('/eraport/login');
+      console.log('success');
+    } else if (iSD) {
+      navigate(previousPath, { replace: true });
+    }
+  }, [iSLG, iSD, previousPath, navigate]);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    if (confirm(`anda yakin ingin keluar`)) {
       try {
         await logout().unwrap();
-        navigate('/eraport/login');
       } catch (err) {
         console.error(err);
       }
-    };
-    removeCred();
+    }
   };
 
   const handleDelete = async (e) => {
@@ -51,7 +62,6 @@ const Profile = () => {
     if (confirm(`anda yakin ingin menghapus ${userDisplayed.username}?`)) {
       try {
         await deleteStudent({ id: userDisplayed._id });
-        navigate(previousPath, { replace: true });
       } catch (error) {
         console.log(error);
       }
@@ -62,7 +72,7 @@ const Profile = () => {
 
   let errorMsg = '';
 
-  if (isLoading || iLL || iLD) {
+  if (isLoading) {
     return <Loader />;
   } else if (isSuccess) {
     const buttonAuthUser = userDisplayed.username === authUser.username && (
@@ -124,9 +134,7 @@ const Profile = () => {
       </div>
     );
   } else if (isError || iEL || iLD) {
-    if (isError) {
-      errorMsg = error.data.message;
-    } else if (iEL) {
+    if (iEL) {
       errorMsg = eL.data.message;
     } else if (iED) {
       errorMsg = eD.data.message;
@@ -137,6 +145,7 @@ const Profile = () => {
 
   return (
     <div className="container-user-profile">
+      {(iLL || iLD) && <Loader />}
       {errorMsg && <h1>{errorMsg}</h1>}
       {authUser.username !== username && (
         <div

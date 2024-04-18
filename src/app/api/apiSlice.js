@@ -5,7 +5,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.VITE_NODE_ENV !== 'development'
       ? import.meta.env.VITE_URL_RAPORT_API
-      : 'http://localhost:5000',
+      : import.meta.env.VITE_URL_LOCAL,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
