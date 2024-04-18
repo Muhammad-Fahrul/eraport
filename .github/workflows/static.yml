@@ -31,6 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set environment variables
+        run: |
+          echo "VITE_NODE_ENV=$VITE_NODE_ENV" >> $GITHUB_ENV
+          echo "VITE_URL_RAPORT_API=$VITE_URL_RAPORT_API" >> $GITHUB_ENV
+        env:
+          VITE_APP_NODE_ENV: ${{ secrets.VITE_APP_NODE_ENV }}
+          VITE_URL_RAPORT_API: ${{ secrets.VITE_URL_RAPORT_API }}
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
