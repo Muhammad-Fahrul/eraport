@@ -58,14 +58,14 @@
 .container-navbar .right .nav-btns .hidden {
   position: absolute;
   right: 0;
-  bottom: -50px;
+  bottom: -60px;
   background-color: white;
-  border: 1px solid rgba(61, 61, 61, 0.692);
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.164);
+  border-radius: 5px;
   z-index: 999;
   display: flex;
   flex-direction: column;
   gap: 0.2em;
-  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -75,10 +75,15 @@
   background-color: white;
   border: none;
   gap: 0.5em;
-  padding: 0.2em 1em;
+  padding: 0.4em 1em;
   text-transform: capitalize;
+  font-size: 18px;
+}
+
+.container-navbar .right .nav-btns .hidden button span {
+  font-size: 12px;
 }
 
 .container-navbar .right .nav-btns .hidden button:hover {
-  background-color: rgb(192, 192, 192);
+  background-color: rgb(211, 211, 211);
 }
