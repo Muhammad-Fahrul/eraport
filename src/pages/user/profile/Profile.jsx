@@ -58,11 +58,9 @@ const Profile = () => {
     return <Loader />;
   } else if (isSuccess) {
     const buttonAuthUser = userDisplayed.username === authUser.username && (
-      <div>
-        <button onClick={() => navigate(`edit`, { state: { from: location } })}>
-          <i className="fa-solid fa-gear"></i>
-        </button>
-      </div>
+      <button onClick={() => navigate(`edit`, { state: { from: location } })}>
+        <i className="fa-solid fa-pen-to-square"></i>
+      </button>
     );
 
     const button = userDisplayed.username === authUser.username && (

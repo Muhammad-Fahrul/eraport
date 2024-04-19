@@ -35,10 +35,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 100px;
-  border: 1px solid rgba(0, 0, 0, 0.63);
+  background-color: rgb(221, 220, 220);
+  border: none;
 }
 
 .container-navbar .right .nav-btns .profile img {
@@ -57,7 +58,7 @@
 .container-navbar .right .nav-btns .hidden {
   position: absolute;
   right: 0;
-  bottom: -45px;
+  bottom: -50px;
   background-color: white;
   border: 1px solid rgba(61, 61, 61, 0.692);
   z-index: 999;
