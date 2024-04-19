@@ -48,13 +48,12 @@
   border: none;
   background-color: transparent;
   font-size: 24px;
-  margin-left: 10px;
 }
 
 .container-user-profile .wrapper .description .bottom table tr th {
   text-align: start;
   font-size: 24px;
-  width: 35px;
+  width: 30px;
 }
 
 .container-user-profile .wrapper .description .bottom table td {
