@@ -94,7 +94,7 @@ const Profile = () => {
               </tr>
               <tr>
                 <th>
-                  <i className="fa-solid fa-signature"></i>
+                  <i className="fa-solid fa-address-book"></i>
                 </th>
                 <td>{userDisplayed.username}</td>
               </tr>
