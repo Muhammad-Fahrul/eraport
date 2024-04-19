@@ -16,6 +16,7 @@ import useAuth from '../../../hooks/useAuth.js';
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
+  const [searchName, setSearchName] = useState('');
 
   const authUser = useAuth();
 
@@ -47,8 +48,28 @@ const StudentList = () => {
       filteredIds = ids;
     }
 
-    content = filteredIds.length ? (
-      filteredIds.map((studentId) => (
+    console.log(searchName);
+
+    let keysSearch = Object.values(entities).map((student) => {
+      if (searchName.length <= 0) {
+        return student.id;
+      } else if (
+        student.username
+          .toLocaleLowerCase()
+          .includes(searchName.toLocaleLowerCase())
+      ) {
+        return student.id;
+      }
+    });
+
+    let searchedIds = keysSearch
+      .filter((item) => item !== undefined)
+      .map((keyId) => {
+        return filteredIds.filter((id) => id === keyId)[0];
+      });
+
+    content = searchedIds.length ? (
+      searchedIds.map((studentId) => (
         <Student
           key={studentId}
           studentId={studentId}
@@ -56,7 +77,7 @@ const StudentList = () => {
         />
       ))
     ) : (
-      <h4>Belum ada siswa</h4>
+      <h4>No Student</h4>
     );
   } else if (isError) {
     return <Error message={error.data?.message} />;
@@ -70,6 +91,17 @@ const StudentList = () => {
 
   return (
     <div className="container-students">
+      <form className="form-search">
+        <span className="search-icon-container">
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input
+          type="search"
+          placeholder="Search by Name"
+          onChange={(e) => setSearchName(e.target.value)}
+          value={searchName}
+        />
+      </form>
       <ul className="students">{content}</ul>
 
       {screen && (
