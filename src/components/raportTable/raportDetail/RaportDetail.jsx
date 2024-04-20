@@ -1,6 +1,6 @@
 import './raportDetail.css';
 
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import deleteIcon from '../../../assets/icons/delete.svg';
 
