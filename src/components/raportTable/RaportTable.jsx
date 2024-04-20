@@ -2,8 +2,8 @@ import './raportTable.css';
 
 import { useGetRaportsByUsernameQuery } from '../../pages/raport/redux/raportApiSlice';
 
-import Raport from './raport/Raport';
-import { useState } from 'react';
+import { Raport } from './raport/Raport';
+import { useCallback, useState } from 'react';
 import RaportDetail from './raportDetail/RaportDetail';
 
 import PropTypes from 'prop-types';
@@ -12,15 +12,18 @@ const RaportTable = ({ username }) => {
   const [detailRaport, setDetailRaport] = useState({});
   const [screen, setScreen] = useState(false);
 
-  const handleDetail = (id) => {
-    const detailRaport = data.raports.find((raport) => raport._id === id);
-
-    setDetailRaport(detailRaport);
-    setScreen(true);
-  };
-
   const { data, isSuccess, isLoading, isError, error } =
     useGetRaportsByUsernameQuery(username);
+
+  const handleDetail = useCallback(
+    (id) => {
+      const detailRaport = data.raports.find((raport) => raport._id === id);
+
+      setDetailRaport(detailRaport);
+      setScreen(true);
+    },
+    [data?.raports]
+  );
 
   let raportsContent;
 

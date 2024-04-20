@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import infoIcon from '../../../assets/icons/info.svg';
 
 import PropTypes from 'prop-types';
@@ -29,4 +30,10 @@ Raport.propTypes = {
   handleDetail: PropTypes.func.isRequired,
 };
 
-export default Raport;
+const areEqual = (prevProp, nextProp) => {
+  return prevProp.raport_id === nextProp.raport_id;
+};
+
+const memoizedRaport = memo(Raport, areEqual);
+
+export { memoizedRaport as Raport };
