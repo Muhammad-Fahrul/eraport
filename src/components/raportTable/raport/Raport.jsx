@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import infoIcon from '../../../assets/icons/info.svg';
 
 import PropTypes from 'prop-types';
 
@@ -19,7 +18,7 @@ const Raport = ({ raport, handleDetail }) => {
           handleDetail(raport._id);
         }}
       >
-        <img src={infoIcon} alt="" />
+        <i className="fa-solid fa-circle-info"></i>
       </td>
     </tr>
   );

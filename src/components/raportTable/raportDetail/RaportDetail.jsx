@@ -1,6 +1,6 @@
 import './raportDetail.css';
 
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
 import deleteIcon from '../../../assets/icons/delete.svg';
 
@@ -70,4 +70,4 @@ RaportDetail.propTypes = {
   setScreen: PropTypes.func.isRequired,
 };
 
-export default RaportDetail;
+export { RaportDetail };

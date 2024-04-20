@@ -48,8 +48,6 @@ const StudentList = () => {
       filteredIds = ids;
     }
 
-    console.log(searchName);
-
     let keysSearch = Object.values(entities).map((student) => {
       if (searchName.length <= 0) {
         return student.id;

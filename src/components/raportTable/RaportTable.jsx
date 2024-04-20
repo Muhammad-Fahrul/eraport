@@ -2,9 +2,10 @@ import './raportTable.css';
 
 import { useGetRaportsByUsernameQuery } from '../../pages/raport/redux/raportApiSlice';
 
+import { memo, useCallback, useState } from 'react';
+
 import { Raport } from './raport/Raport';
-import { useCallback, useState } from 'react';
-import RaportDetail from './raportDetail/RaportDetail';
+import { RaportDetail } from './raportDetail/RaportDetail';
 
 import PropTypes from 'prop-types';
 
@@ -68,4 +69,10 @@ RaportTable.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export default RaportTable;
+const areEqual = (prevProp, nextProp) => {
+  return prevProp.username === nextProp.username;
+};
+
+const memoizedRaportTable = memo(RaportTable, areEqual);
+
+export { memoizedRaportTable as RaportTable };

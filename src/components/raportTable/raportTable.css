@@ -25,6 +25,11 @@
   text-align: center;
 }
 
+.container-table-raport .table-raport tbody tr td:last-child {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
 .container-table-raport .table-raport tr {
   height: 35px;
 }
@@ -43,7 +48,7 @@
 }
 
 .container-table-raport .table-raport .status.success {
-  background-color: greenyellow;
+  background-color: rgb(113, 255, 47);
 }
 
 .container-table-raport .table-raport .status.fail {
