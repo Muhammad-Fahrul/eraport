@@ -1,7 +1,7 @@
 .container-table-raport {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  max-height: 395px;
+  /* max-height: 395px; */
   overflow: hidden;
 }
 

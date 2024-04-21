@@ -110,7 +110,7 @@ const StudentList = () => {
 
       <div onClick={() => setScreen(true)}>
         <ButtonIcon text="NEW">
-          <img src={addIcon} />
+          <i className="fa-solid fa-plus"></i>
         </ButtonIcon>
       </div>
     </div>

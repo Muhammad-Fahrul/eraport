@@ -11,6 +11,7 @@ import useAuth from '../../../hooks/useAuth';
 import { useGetUserQuery } from '../redux/userApiSlice';
 import { useDeleteStudentMutation } from '../../student/redux/studentApiSlice';
 import { useEffect } from 'react';
+import Back from '../../../components/button/back/Back.jsx';
 
 const Profile = () => {
   const authUser = useAuth();
@@ -123,23 +124,9 @@ const Profile = () => {
       {iLD && <Loader />}
       {errorMsg && <h1>{errorMsg}</h1>}
       {authUser.username !== username && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1em',
-            marginBottom: '.5em',
-          }}
-        >
-          <span
-            style={{ height: '2px', border: '1px dashed black', flex: '2' }}
-          />
-          <button
-            className="back"
-            onClick={() => navigate(previousPath, { replace: true })}
-          >
-            <i className="fa-solid fa-arrow-left"></i>
-          </button>
+        <div className="container-back">
+          <span className="dotted-line" />
+          <Back previousPath={previousPath} />{' '}
         </div>
       )}
       <div className="wrapper">

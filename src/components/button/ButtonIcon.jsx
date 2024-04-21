@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const ButtonIcon = ({ children, text }) => {
   return (
-    <button className="Btn">
-      <div className="sign">{children}</div>
+    <button className="button-icon-position-fixed">
+      <div className="icon">{children}</div>
       <div className="text">{text}</div>
     </button>
   );

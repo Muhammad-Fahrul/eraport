@@ -1,4 +1,4 @@
-.Btn {
+.button-icon-position-fixed {
   position: fixed;
   right: 1.2em;
   bottom: 1.5em;
@@ -13,54 +13,49 @@
   overflow: hidden;
   transition-duration: 0.3s;
   box-shadow: 2px 2px 5px 0px rgba(3, 3, 3, 0.945);
-  background-color: var(--af-white);
+  background-color: var(--primary-color);
+  color: var(--af-white);
   z-index: 99;
 }
 
-/* plus sign */
-.sign {
+/* plus icon */
+.button-icon-position-fixed .icon {
   width: 100%;
   transition-duration: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.sign svg {
-  width: 15px;
+  font-size: 1.2em;
 }
 
 /* text */
-.text {
+.button-icon-position-fixed .text {
   position: absolute;
   right: 0%;
   width: 0%;
-  opacity: 0;
-  font-size: 1.2em;
   font-weight: 600;
   transition-duration: 0.3s;
-  color: var(--err-black);
 }
 /* hover effect on button width */
-.Btn:hover {
-  width: 100px;
+.button-icon-position-fixed:hover {
+  width: 80px;
   border-radius: 5px;
   transition-duration: 0.3s;
 }
 
-.Btn:hover .sign {
+.button-icon-position-fixed:hover .icon {
   width: 35%;
   transition-duration: 0.3s;
   padding-left: 10px;
 }
 /* hover effect button's text */
-.Btn:hover .text {
+.button-icon-position-fixed:hover .text {
   opacity: 1;
   width: 70%;
   transition-duration: 0.3s;
   padding-right: 10px;
 }
 /* button click effect*/
-.Btn:active {
+.button-icon-position-fixed:active {
   transform: translate(2px, 2px);
 }

@@ -2,17 +2,15 @@ import './raportList.css';
 
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-import addIcon from '../../../assets/icons/add.svg';
-
 import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import ButtonIcon from '../../../components/button/ButtonIcon';
 
 import { RaportTable } from '../../../components/raportTable/RaportTable.jsx';
 import { NewRaport } from './components/newRaport/NewRaport.jsx';
+import Back from '../../../components/button/back/Back.jsx';
 
 const RaportList = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const currentUser = useAuth();
   const [screenNR, setScreenNR] = useState(false);
@@ -26,9 +24,7 @@ const RaportList = () => {
         <h1 className="username">
           <span>{username}</span> record
         </h1>
-        <button className="back" onClick={() => navigate(previousPath)}>
-          <i className="fa-solid fa-arrow-left"></i>
-        </button>
+        <Back previousPath={previousPath} />
       </div>
 
       <RaportTable username={username} />
@@ -38,7 +34,7 @@ const RaportList = () => {
       {currentUser?.isMentor && (
         <div onClick={() => setScreenNR(true)}>
           <ButtonIcon text="NEW">
-            <img src={addIcon} />
+            <i className="fa-solid fa-plus"></i>
           </ButtonIcon>
         </div>
       )}
