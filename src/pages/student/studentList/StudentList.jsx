@@ -38,18 +38,30 @@ const StudentList = () => {
 
     let filteredIds;
 
+    let filteredEntities;
+
     if (authUser.isStudent) {
       const authUserId = Object.values(entities).find(
-        (e) => e.username === authUser.username
+        (e) =>
+          e.username.toLocaleLowerCase() ===
+          authUser.username.toLocaleLowerCase()
       )?.id;
+
+      filteredEntities = Object.values(entities).filter(
+        (e) =>
+          e.username.toLocaleLowerCase() !==
+          authUser.username.toLocaleLowerCase()
+      );
 
       filteredIds = ids.filter((studentId) => studentId !== authUserId);
     } else {
+      filteredEntities = entities;
+
       filteredIds = ids;
     }
 
-    let keysSearch = Object.values(entities).map((student) => {
-      if (searchName.length <= 0) {
+    let keysSearch = Object.values(filteredEntities).map((student) => {
+      if (!searchName.length) {
         return student.id;
       } else if (
         student.username
