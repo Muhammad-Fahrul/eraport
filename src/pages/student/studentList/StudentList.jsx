@@ -1,7 +1,5 @@
 import './studentList.css';
 
-import addIcon from '../../../assets/icons/add.svg';
-
 import { useState } from 'react';
 
 import ButtonIcon from '../../../components/button/ButtonIcon.jsx';

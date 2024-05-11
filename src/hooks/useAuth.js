@@ -2,7 +2,6 @@ import { jwtDecode } from 'jwt-decode';
 import { useSelector } from 'react-redux';
 
 import { selectCurrentToken } from '../pages/auth/redux/authSlice';
-import { useGetUserQuery } from '../pages/user/redux/userApiSlice';
 
 const useAuth = () => {
   const token = useSelector(selectCurrentToken);
