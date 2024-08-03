@@ -36,13 +36,13 @@ jobs:
           echo "VITE_NODE_ENV=$VITE_NODE_ENV" >> $GITHUB_ENV
           echo "VITE_URL_RAPORT_API=$VITE_URL_RAPORT_API" >> $GITHUB_ENV
         env:
-          VITE_APP_NODE_ENV: ${{ secrets.VITE_APP_NODE_ENV }}
+          VITE_NODE_ENV: ${{ secrets.VITE_NODE_ENV }}
           VITE_URL_RAPORT_API: ${{ secrets.VITE_URL_RAPORT_API }}
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       - name: Install Depedencies
         run: npm install
       - name: Build
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
