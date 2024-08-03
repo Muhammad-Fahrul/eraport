@@ -38,17 +38,17 @@ const Navbar = () => {
   };
 
   const handleToProfile = () => {
-    navigate('/me');
+    navigate('me');
     setScreen(false);
   };
 
   const handleToDashboard = () => {
-    navigate('/mentor/dashboard');
+    navigate('mentor/dashboard');
     setScreen(false);
   };
 
   const handleToHome = () => {
-    navigate('/');
+    navigate('');
     setScreen(false);
   };
 

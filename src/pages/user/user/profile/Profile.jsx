@@ -1,15 +1,20 @@
 import './profile.css';
 import profile from '../../../../assets/icons/user.svg';
+import { useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import Back from '../../../../components/button/back/Back';
 
 const Profile = ({ user }) => {
+  const location = useLocation();
+
+  const prevPath = location.state?.from.pathname || '/eraport';
+
   const content = (
     <div className="container-user-profile">
       <div className="container-back">
         <span className="dotted-line" />
-        <Back previousPath={'/users'} />
+        <Back previousPath={prevPath} />
       </div>
       <div className="wrapper">
         <div className="profile">

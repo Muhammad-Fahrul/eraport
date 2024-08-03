@@ -18,7 +18,7 @@ const User = ({ userId }) => {
   const location = useLocation();
 
   const handleToDetail = () => {
-    navigate(`/users/${user.username}`, {
+    navigate(`${user.username}`, {
       state: { from: location },
     });
   };

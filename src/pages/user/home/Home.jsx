@@ -13,7 +13,7 @@ const Home = () => {
       <div className="wrapper">
         <div>
           <h3>Users</h3>
-          <Link to="/users">
+          <Link to="users">
             <h5>
               Semua pengguna <i className="fa-solid fa-angles-right"></i>
             </h5>

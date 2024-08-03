@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import store from './app/store.js';
-import { ROLES } from './config/roles.js'
+import { ROLES } from './config/roles.js';
 import { lazyLoad } from './lazyLoad.js';
 
 import MainLayout from './layout/MainLayout';
@@ -41,7 +41,7 @@ const allRoles = [...Object.values(ROLES)];
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainLayout />}>
+    <Route path="/eraport" element={<MainLayout />}>
       <Route path="register" element={<Register />} />
       <Route path="login" element={<Login />} loader={loginLoader} />
 
