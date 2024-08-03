@@ -35,6 +35,9 @@ jobs:
         run: |
           echo "VITE_NODE_ENV=$VITE_NODE_ENV" >> $GITHUB_ENV
           echo "VITE_URL_RAPORT_API=$VITE_URL_RAPORT_API" >> $GITHUB_ENV
+        env:
+          VITE_NODE_ENV: ${{ secrets.VITE_NODE_ENV }}
+          VITE_URL_RAPORT_API: ${{ secrets.VITE_URL_RAPORT_API }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
