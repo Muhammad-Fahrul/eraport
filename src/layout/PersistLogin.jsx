@@ -67,7 +67,7 @@ const PersistLogin = () => {
             : 'Internal server error'}
         </h4>
         <p style={{ marginBottom: '.5em' }}>you have to login first</p>
-        <Button url="/login" text="login" />
+        <Button url="/eraport/login" text="login" />
       </div>
     );
   } else if (isSuccess && trueSuccess) {

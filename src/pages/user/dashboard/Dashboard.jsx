@@ -30,7 +30,7 @@ const Dashboard = () => {
       raports.map((raport) => {
         return (
           <li key={raport._id}>
-            <Link to={`/mentor/raports/${raport._id}`}>
+            <Link to={`/eraport/mentor/raports/${raport._id}`}>
               <div className={raport.valid ? 'valid' : 'invalid'}>
                 <h4>{raport.name}</h4>
                 <span>{raport.valid ? 'valid' : 'invalid'}</span>
@@ -64,7 +64,7 @@ const Dashboard = () => {
     <div className="wrapper">
       <div>
         <h3>Santri</h3>
-        <Link to="/mentor/students">
+        <Link to="/eraport/mentor/students">
           <h5>
             Santri <i className="fa-solid fa-angles-right"></i>
           </h5>
@@ -86,12 +86,12 @@ const Dashboard = () => {
       </div>
       <div>
         <h3>Analytics</h3>
-        <Link to="/mentor/reports">
+        <Link to="/eraport/mentor/reports">
           <h5>
             Reports <i className="fa-solid fa-angles-right"></i>
           </h5>
         </Link>
-        <Link to="/mentor/reports/array">
+        <Link to="/eraport/mentor/reports/array">
           <h5>
             Reports By Array <i className="fa-solid fa-angles-right"></i>
           </h5>

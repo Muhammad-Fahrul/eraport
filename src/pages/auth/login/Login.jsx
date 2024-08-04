@@ -21,7 +21,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/eraport';
 
   const [login, { isLoading }] = useLoginMutation();
 

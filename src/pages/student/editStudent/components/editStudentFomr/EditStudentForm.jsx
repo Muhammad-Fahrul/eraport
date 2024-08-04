@@ -28,7 +28,7 @@ const EditStudentForm = ({ student }) => {
   };
 
   const toRecords = (raportId) => {
-    navigate(`/students/${student.username}/records/${raportId}`, {
+    navigate(`/eraport/students/${student.username}/records/${raportId}`, {
       state: { from: location },
     });
   };
@@ -42,7 +42,7 @@ const EditStudentForm = ({ student }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/mentor/students');
+      navigate('/eraport/mentor/students');
     }
   }, [isSuccess, navigate]);
 
@@ -52,7 +52,7 @@ const EditStudentForm = ({ student }) => {
 
       <div className="container-back">
         <span className="dotted-line" />
-        <Back previousPath={'/mentor/students'} />
+        <Back previousPath={'/eraport/mentor/students'} />
       </div>
       <div className="wrapper">
         <div className="profile">

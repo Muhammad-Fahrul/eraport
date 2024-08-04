@@ -23,7 +23,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/login');
+      navigate('/eraport/login');
     }
   }, [isSuccess, navigate]);
 
