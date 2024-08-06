@@ -44,7 +44,7 @@ const Raport = () => {
 
   useEffect(() => {
     if (iSDR) {
-      navigate('/');
+      navigate('/eraport/dashboard');
     }
   }, [navigate, iSDR]);
 

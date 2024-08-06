@@ -29,7 +29,7 @@ function NewStudents() {
 
   return (
     <form onSubmit={handleSubmit} className="wrapper">
-      <div>
+      <div className="inputBox">
         <label htmlFor="file">Upload CSV file:</label>
         <input
           type="file"

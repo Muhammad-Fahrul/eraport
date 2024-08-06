@@ -91,6 +91,7 @@ const Dashboard = () => {
             Reports <i className="fa-solid fa-angles-right"></i>
           </h5>
         </Link>
+        <hr />
         <Link to="/eraport/mentor/reports/array">
           <h5>
             Reports By Array <i className="fa-solid fa-angles-right"></i>

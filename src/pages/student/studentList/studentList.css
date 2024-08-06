@@ -1,3 +1,24 @@
+.container-students .title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5em;
+}
+
+.container-students .title button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  background-color: var(--primary-color);
+  color: var(--af-white);
+}
+
 .container-students .form-search {
   position: relative;
   margin-bottom: 1em;
@@ -20,6 +41,7 @@
   width: 100%;
   font-size: 1rem;
 }
+
 .students {
   display: flex;
   flex-direction: column;

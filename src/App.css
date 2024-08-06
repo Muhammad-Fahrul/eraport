@@ -35,4 +35,5 @@ body {
   padding: 0.5em;
   min-height: calc(100vh - 60px);
   margin-inline: auto;
+  padding-bottom: 2em;
 }

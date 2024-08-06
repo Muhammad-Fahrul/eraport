@@ -96,7 +96,14 @@ const StudentList = () => {
 
   return (
     <div className="container-students">
-      <h3>STUDENTS</h3>
+      <div className="title">
+        <h3>STUDENTS</h3>
+        {authUser.isMentor && (
+          <button onClick={() => setScreen(true)}>
+            <i className="fa-solid fa-plus"></i>
+          </button>
+        )}
+      </div>
       <form className="form-search">
         <span className="search-icon-container">
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -122,16 +129,6 @@ const StudentList = () => {
             add {screen2 ? 'multipe user here' : 'single user here'}
           </button>
         </div>
-      )}
-
-      {authUser.isMentor && (
-        <>
-          <div onClick={() => setScreen(true)}>
-            <ButtonIcon text="NEW">
-              <i className="fa-solid fa-plus"></i>
-            </ButtonIcon>
-          </div>
-        </>
       )}
     </div>
   );

@@ -17,10 +17,9 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  max-width: 350px;
   border-radius: 15px;
   border-radius: 8px;
-  padding: 1em;
+  padding: 3em;
   gap: 1em;
 }
 

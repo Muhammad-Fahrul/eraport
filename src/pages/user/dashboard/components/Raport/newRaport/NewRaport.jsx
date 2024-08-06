@@ -26,17 +26,15 @@ const NewRaport = () => {
     if (isSuccess) {
       alert(`skema ${raportNameRef.current.value} berhasil ditambahkan`);
       raportNameRef.current.value = '';
+    } else if (isError) {
+      alert(error.data.message);
     }
-  }, [isSuccess, raportNameRef]);
+  }, [isSuccess, raportNameRef, isError, error]);
 
   let raportAddedLoader;
 
   if (isLoading) {
     raportAddedLoader = <Loader />;
-  }
-
-  if (isError) {
-    alert(error.data.message);
   }
 
   return (

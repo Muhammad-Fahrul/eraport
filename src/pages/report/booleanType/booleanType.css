@@ -1,16 +1,12 @@
 /* studentReport.css */
 
 /* Container styling */
-.student-reports {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
 
 /* Report group styling */
+.student-reports {
+  padding: 20px;
+}
+
 .report-group {
   padding: 20px;
   background-color: #fff;
