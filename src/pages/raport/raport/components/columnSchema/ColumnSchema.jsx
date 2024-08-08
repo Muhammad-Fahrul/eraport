@@ -78,6 +78,7 @@ const ColumnSchema = ({ columns, valid, showModal, raportId }) => {
             </option>
           </select>
           <button
+            className="delete-btn"
             onClick={(e) => {
               e.preventDefault();
               onDeleteInput(inputData._id);

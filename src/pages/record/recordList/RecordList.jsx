@@ -22,7 +22,7 @@ const RecordList = () => {
     raportId,
   });
 
-  const previousPath = location.state?.from.pathname || '/';
+  const previousPath = location.state?.from.pathname || '/eraport';
 
   let recordNameEl;
 
@@ -35,7 +35,7 @@ const RecordList = () => {
   if (isLoading) {
     recordsEl = <p>loading...</p>;
   } else if (isSuccess) {
-    const { student,raport, records } = data;
+    const { student, raport, records } = data;
     recordNameEl = <span>{raport.name}</span>;
 
     recordsEl = records.length ? (
@@ -49,6 +49,7 @@ const RecordList = () => {
         studentId={student._id}
         raportId={raport._id}
         columns={raport.columns}
+        prevRecord={records[records.length - 1]}
         setScreenNR={setScreenNR}
       />
     );

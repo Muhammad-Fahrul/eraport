@@ -37,3 +37,8 @@ body {
   margin-inline: auto;
   padding-bottom: 2em;
 }
+
+button {
+  border: none;
+  color: var(--font-color);
+}

@@ -51,8 +51,14 @@ const Record = ({ record, handleDetail }) => {
           <td key={keyword + value + i}>
             {Array.isArray(value) ? (
               <select disabled>
-                <option value={value[0]}>{value[0]}</option>
+                <option value={value[0]}>
+                  {value[0].length > 5
+                    ? `${value[0].slice(0, 5)}...`
+                    : value[0]}
+                </option>
               </select>
+            ) : value.length > 5 ? (
+              `${value.slice(0, 5)}...`
             ) : (
               value
             )}

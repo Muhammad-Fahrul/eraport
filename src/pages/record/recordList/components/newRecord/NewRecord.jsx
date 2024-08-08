@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import { useAddRecordMutation } from '../../../redux/recordApiSlice';
 import { useEffect, useState } from 'react';
 
-const NewRecord = ({ studentId, raportId, columns, setScreenNR }) => {
+const NewRecord = ({
+  studentId,
+  raportId,
+  columns,
+  setScreenNR,
+  prevRecord,
+}) => {
   const [input, setInput] = useState({});
 
   const [addRecord, { isSuccess, isError, error }] = useAddRecordMutation();
@@ -90,6 +96,13 @@ const NewRecord = ({ studentId, raportId, columns, setScreenNR }) => {
           <input
             type={item.columnType}
             onChange={(e) => handleChange(item.columnName, e.target.value)}
+            value={
+              prevRecord
+                ? prevRecord[item.columnName]
+                : input[item.columnName]
+                ? input[item.columnName]
+                : ''
+            }
           />
         </div>
       );
@@ -115,6 +128,7 @@ NewRecord.propTypes = {
   raportId: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,
   setScreenNR: PropTypes.func.isRequired,
+  prevRecord: PropTypes.object,
 };
 
 export { NewRecord };

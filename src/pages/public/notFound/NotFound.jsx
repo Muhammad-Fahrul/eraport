@@ -6,7 +6,7 @@ export default function NotFound() {
       <h3 style={{ marginBottom: '1em' }}>
         Sorry, the page you were looking for was not found.
       </h3>
-      <Button url="/" text="Home" />
+      <Button url="/eraport" text="Home" />
     </div>
   );
 }
