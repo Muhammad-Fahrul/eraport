@@ -8,7 +8,6 @@
   height: 30px;
   background-color: rgb(252, 64, 64);
   padding: 0.3em;
-  align-self: flex-end;
   border-radius: 100px;
 }
 
@@ -18,7 +17,6 @@
   height: 30px;
   padding: 0.3em;
   border-radius: 100px;
-  align-self: flex-end;
   background-color: var(--primary-color);
 }
 
