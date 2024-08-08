@@ -3,7 +3,7 @@ import './newRecord.css';
 import PropTypes from 'prop-types';
 
 import { useAddRecordMutation } from '../../../redux/recordApiSlice';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const NewRecord = ({
   studentId,
@@ -13,6 +13,7 @@ const NewRecord = ({
   prevRecord,
 }) => {
   const [input, setInput] = useState({});
+  const inpRef = useRef();
 
   const [addRecord, { isSuccess, isError, error }] = useAddRecordMutation();
 
@@ -47,12 +48,16 @@ const NewRecord = ({
   };
 
   useEffect(() => {
+    inpRef.current.focus();
+  }, []);
+
+  useEffect(() => {
     if (isSuccess) {
       setScreenNR(false);
     }
   }, [isSuccess, setScreenNR]);
 
-  let form = columns.map((item) => {
+  let form = columns.map((item, i) => {
     if (item.columnType === 'boolean') {
       return (
         <div className="inputBox" key={item._id}>
@@ -94,6 +99,7 @@ const NewRecord = ({
           <label htmlFor={item.columnName}>{item.columnName}</label>
 
           <input
+            ref={i == 0 ? inpRef : null}
             type={item.columnType}
             onChange={(e) => handleChange(item.columnName, e.target.value)}
             value={
@@ -111,13 +117,13 @@ const NewRecord = ({
 
   return (
     <div className="container-raport-new">
-      <form className="wrapper" onSubmit={handleAdd}>
+      <form className="wrapper" onSubmit={handleAdd} autoComplete="off">
         {isError && <p>{error?.data?.message || 'muat ulang'}</p>}
         {form}
+        <button className="enter">Add</button>
         <span className="close" onClick={() => setScreenNR(false)}>
           <i className="fa-solid fa-circle-xmark"></i>
         </span>
-        <button className="enter">Add</button>
       </form>
     </div>
   );

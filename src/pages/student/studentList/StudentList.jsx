@@ -2,7 +2,6 @@ import './studentList.css';
 
 import { useState } from 'react';
 
-import ButtonIcon from '../../../components/button/ButtonIcon.jsx';
 import { Student } from './components/student/Student.jsx';
 import { NewStudent } from './components/newStudent/NewStudent.jsx';
 

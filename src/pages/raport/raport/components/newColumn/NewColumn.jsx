@@ -50,7 +50,7 @@ const NewColumn = ({ raportId, showModal }) => {
   }
 
   return (
-    <div className="column-input">
+    <form autoComplete="off" className="column-input">
       <div>
         <input
           type="text"
@@ -128,7 +128,7 @@ const NewColumn = ({ raportId, showModal }) => {
           />
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
