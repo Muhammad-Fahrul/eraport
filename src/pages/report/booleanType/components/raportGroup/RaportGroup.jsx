@@ -26,28 +26,32 @@ const RaportGroup = ({ raportData }) => {
           </option>
         ))}
       </select>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            {Object.keys(selectedAnalytics.students[0].columnStatic).map(
-              (key) => (
-                <th key={key}>{key}</th>
-              )
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {selectedAnalytics.students.map((student) => (
-            <tr key={student.studentId}>
-              <td>{student.studentName}</td>
-              {Object.values(student.columnStatic).map((value, index) => (
-                <td key={index}>{value}</td>
-              ))}
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              {selectedAnalytics.students[0].columnStatic.map((val) =>
+                Object.keys(val.value).map((k, i) => (
+                  <th key={val + k + i}>{k}</th>
+                ))
+              )}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {selectedAnalytics.students.map((student) => (
+              <tr key={student.studentId}>
+                <td>{student.studentName}</td>
+                {student.columnStatic.map((key) =>
+                  Object.values(key.value).map((k, i) => (
+                    <td key={key.columnName + k + i}>{k}</td>
+                  ))
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

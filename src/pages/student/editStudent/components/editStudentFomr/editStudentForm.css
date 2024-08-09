@@ -91,6 +91,28 @@
   overflow: hidden;
 }
 
+.container-student-profile .title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-block: 0.5em;
+}
+
+.container-student-profile .title button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  background-color: var(--primary-color);
+  color: var(--af-white);
+}
+
 .container-student-profile .stats {
   display: flex;
   justify-content: space-between;

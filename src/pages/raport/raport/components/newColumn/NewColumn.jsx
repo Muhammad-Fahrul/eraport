@@ -1,5 +1,5 @@
 import './newColumn.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAddColumnMutation } from '../../../redux/columnApiSlice';
 import PropTypes from 'prop-types';
 import Loader from '../../../../../components/loader/Loader';
@@ -11,7 +11,10 @@ const NewColumn = ({ raportId, showModal }) => {
   const [falseValue, setFalseValue] = useState('');
   const [arrayValues, setArrayValues] = useState([]);
 
-  const [addColumn, { isLoading, isError, error }] = useAddColumnMutation();
+  const inpRef = useRef();
+
+  const [addColumn, { isSuccess, isLoading, isError, error }] =
+    useAddColumnMutation();
 
   const onAddToInputBody = async () => {
     try {
@@ -32,12 +35,17 @@ const NewColumn = ({ raportId, showModal }) => {
       setTrueValue('');
       setFalseValue('');
       setArrayValues([]);
-
       showModal(result?.data?.message, 'success');
     } catch (error) {
       console.log(error?.data?.message);
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      inpRef.current.focus();
+    }
+  }, [isSuccess]);
 
   useEffect(() => {
     if (isError) {
@@ -53,6 +61,7 @@ const NewColumn = ({ raportId, showModal }) => {
     <form autoComplete="off" className="column-input">
       <div>
         <input
+          ref={inpRef}
           type="text"
           name="inputName"
           id="inputName"

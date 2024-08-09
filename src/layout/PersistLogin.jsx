@@ -51,6 +51,7 @@ const PersistLogin = () => {
   if (isLoading) {
     return <Loader />;
   } else if (isError) {
+    localStorage.removeItem('login');
     content = (
       <div
         style={{

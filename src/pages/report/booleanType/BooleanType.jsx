@@ -8,28 +8,19 @@ const BooleanType = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.data.message}</div>;
 
-  const groupedByRaport = data.data.reduce((acc, item) => {
-    const key = `${item.raportId}-${item.columnName}`;
-    if (!acc[key]) {
-      acc[key] = {
-        raportId: item.raportId,
-        raportName: item.raportName,
-        columnName: item.columnName,
-        columnAnalytics: [],
-      };
-    }
-    acc[key].columnAnalytics.push(...item.columnAnalytics);
-    return acc;
-  }, {});
+  const { data: raports } = data;
 
-  return Object.entries(groupedByRaport).length ? (
+  return raports.length ? (
     <div className="student-reports">
-      {Object.entries(groupedByRaport).map(([key, raportData]) => (
-        <RaportGroup key={key} raportData={raportData} />
+      {raports.map((raport) => (
+        <RaportGroup
+          key={raport.raportId + raport.columnName}
+          raportData={raport}
+        />
       ))}
     </div>
   ) : (
-    <h3> tidak ada data analisis</h3>
+    <p>No data availabe</p>
   );
 };
 

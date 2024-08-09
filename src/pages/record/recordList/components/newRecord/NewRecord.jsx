@@ -6,6 +6,7 @@ import { useAddRecordMutation } from '../../../redux/recordApiSlice';
 import { useEffect, useRef, useState } from 'react';
 
 const NewRecord = ({
+  raportName,
   studentId,
   raportId,
   columns,
@@ -50,6 +51,21 @@ const NewRecord = ({
   useEffect(() => {
     inpRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    if (prevRecord) {
+      columns.map((item) => {
+        if (item.columnType === 'string' || item.columnType === 'number') {
+          setInput((prevInputs) => {
+            return {
+              ...prevInputs,
+              [item.columnName]: prevRecord[item.columnName],
+            };
+          });
+        }
+      });
+    }
+  }, [prevRecord, columns]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -102,13 +118,7 @@ const NewRecord = ({
             ref={i == 0 ? inpRef : null}
             type={item.columnType}
             onChange={(e) => handleChange(item.columnName, e.target.value)}
-            value={
-              prevRecord
-                ? prevRecord[item.columnName]
-                : input[item.columnName]
-                ? input[item.columnName]
-                : ''
-            }
+            value={input[item.columnName] || ''}
           />
         </div>
       );
@@ -118,6 +128,7 @@ const NewRecord = ({
   return (
     <div className="container-raport-new">
       <form className="wrapper" onSubmit={handleAdd} autoComplete="off">
+        <h5>{raportName}</h5>
         {isError && <p>{error?.data?.message || 'muat ulang'}</p>}
         {form}
         <button className="enter">Add</button>
@@ -130,6 +141,7 @@ const NewRecord = ({
 };
 
 NewRecord.propTypes = {
+  raportName: PropTypes.string.isRequired,
   studentId: PropTypes.string.isRequired,
   raportId: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,

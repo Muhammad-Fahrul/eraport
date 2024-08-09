@@ -7,7 +7,6 @@ import { useDeleteStudentMutation } from '../../../redux/studentApiSlice';
 import { useEffect, useState } from 'react';
 import { NewRaportRelation } from '../newRaportRelation/NewRaportRelation';
 import useAuth from '../../../../../hooks/useAuth';
-import ButtonIcon from '../../../../../components/button/ButtonIcon';
 import Back from '../../../../../components/button/back/Back';
 import Loader from '../../../../../components/loader/Loader';
 
@@ -107,7 +106,14 @@ const EditStudentForm = ({ student }) => {
         authUser.username === student.username) ||
         (authUser.isMentor && student.username !== authUser.username)) && (
         <div className="books">
-          <h3>Raports</h3>
+          <div className="title">
+            <h3>Raports</h3>
+            {authUser.isMentor && (
+              <button onClick={() => setScreen(true)}>
+                <i className="fa-solid fa-plus"></i>
+              </button>
+            )}
+          </div>
           <ul>
             {student.raportIdsStudent.map((raport) => {
               return (
@@ -117,13 +123,6 @@ const EditStudentForm = ({ student }) => {
               );
             })}
           </ul>
-        </div>
-      )}
-      {authUser.isMentor && (
-        <div onClick={() => setScreen(true)}>
-          <ButtonIcon text="NEW">
-            <i className="fa-solid fa-plus"></i>
-          </ButtonIcon>
         </div>
       )}
     </div>

@@ -5,4 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/eraport',
   plugins: [react()],
+  build: {
+    sourcemap: false, // Nonaktifkan source maps
+  },
 });

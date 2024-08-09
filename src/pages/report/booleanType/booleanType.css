@@ -5,6 +5,9 @@
 /* Report group styling */
 .student-reports {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .report-group {
@@ -46,6 +49,10 @@
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
+}
+
+.report-group .table-container {
+  overflow-x: scroll;
 }
 
 .report-group th,

@@ -5,10 +5,7 @@ import {
 } from '../../pages/auth/redux/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl:
-    import.meta.env.VITE_NODE_ENV === 'production'
-      ? import.meta.env.VITE_URL_RAPORT_API
-      : import.meta.env.VITE_URL_LOCAL,
+  baseUrl: import.meta.env.VITE_URL_RAPORT_API,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;

@@ -46,6 +46,7 @@ const RecordList = () => {
 
     newRecordEl = screenNR && raport.status && (
       <NewRecord
+        raportName={raport.name}
         studentId={student._id}
         raportId={raport._id}
         columns={raport.columns}

@@ -26,7 +26,7 @@ const ArrayType = () => {
   }
 
   if (!data || !data.data || data.data.length === 0) {
-    return <div>No data available</div>;
+    return <p>No data available</p>;
   }
 
   const columnData = data.data[0]; // Asumsikan hanya satu set data kolom yang diterima
