@@ -89,7 +89,7 @@ const Raport = () => {
 
   const onDeleteRaport = async (e) => {
     e.preventDefault();
-    if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
+    if (confirm('Apakah Anda yakin ingin menghapus buku laporan ini?')) {
       await deleteRaport(raportId);
     }
   };

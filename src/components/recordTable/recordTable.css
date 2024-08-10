@@ -8,6 +8,7 @@
 .container-table-raport .table-raport {
   width: 100%;
   border-collapse: collapse;
+  background-color: #fff;
 }
 
 .container-table-raport .table-raport thead {
@@ -16,14 +17,19 @@
 
 .container-table-raport .table-raport thead th {
   color: white;
+}
+
+.container-table-raport .table-raport thead th,
+.container-table-raport .table-raport tbody td {
   font-weight: normal;
-  width: 70px;
-  padding: 0.5em;
+  padding: 0.3em;
+  padding-inline: 0.5em;
+  border: 1px solid #ddd;
 }
 
 .container-table-raport .table-raport tbody td {
-  min-width: 60px;
   text-align: center;
+  font-size: 14px;
 }
 
 .container-table-raport .table-raport tbody td select {

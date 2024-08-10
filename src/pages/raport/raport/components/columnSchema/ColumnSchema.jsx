@@ -32,7 +32,7 @@ const ColumnSchema = ({ columns, valid, showModal, raportId }) => {
 
   useEffect(() => {
     if (isError) {
-      showModal(error.data.message);
+      showModal(error.data.message, 'error');
     }
   }, [isError, showModal, error?.data?.message]);
 
@@ -78,6 +78,7 @@ const ColumnSchema = ({ columns, valid, showModal, raportId }) => {
             </option>
           </select>
           <button
+            disabled={valid}
             className="delete-btn"
             onClick={(e) => {
               e.preventDefault();

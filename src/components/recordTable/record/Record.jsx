@@ -45,24 +45,22 @@ const Record = ({ record, handleDetail }) => {
           <i className="fa-solid fa-circle-info"></i>
         </button>
       </td>
-      {generateTbody().map((item, i) => {
-        const { keyword, value } = item;
-        return (
-          <td key={keyword + value + i}>
-            {Array.isArray(value) ? (
-              <select disabled>
-                <option value={value[0]}>
-                  {value[0].length > 5
-                    ? `${value[0].slice(0, 5)}...`
-                    : value[0]}
-                </option>
-              </select>
-            ) : value.length > 5 ? (
-              `${value.slice(0, 5)}...`
-            ) : (
-              value
-            )}
+      {generateTbody().map((item) => {
+        const { value } = item;
+        return Array.isArray(value) ? (
+          <td style={{ textAlign: 'start' }}>
+            <select disabled>
+              <option value={value[0]}>
+                {value[0].length > 7 ? `${value[0].slice(0, 7)}...` : value[0]}
+              </option>
+            </select>
           </td>
+        ) : value.length > 10 ? (
+          <td>{`${value.slice(0, 10)}...`}</td>
+        ) : value.length > 7 ? (
+          <td style={{ textAlign: 'center', padding: '.5em' }}>{value}</td>
+        ) : (
+          <td>{value}</td>
         );
       })}
     </>

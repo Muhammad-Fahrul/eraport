@@ -50,7 +50,7 @@ const RecordTable = ({ raportStatus, records }) => {
       <th>info</th>
       {generateThead(records).map((item) => {
         if (item.length > 5) {
-          return <th key={item}>{`${item.slice(0, 5)}...`}</th>;
+          return <th key={item}>{item}</th>;
         }
         return <th key={item}>{item}</th>;
       })}
