@@ -1,5 +1,5 @@
 import './navbar.css';
-
+import raportLogo from '../../../public/raport.svg';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -61,9 +61,8 @@ const Navbar = () => {
       {isLoading && <Loader />}
       <div className="wrapper">
         <div className="left">
-          <h1>
-            R<span style={{ fontSize: '1rem' }}>aport</span>
-          </h1>
+          <img src={raportLogo} alt="" width="35px" />
+          <h1>aport</h1>
         </div>
         <div className="right">
           {token && (
