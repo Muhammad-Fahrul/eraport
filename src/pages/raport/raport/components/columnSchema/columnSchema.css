@@ -12,7 +12,7 @@
   padding-block: 0.2em;
 }
 
-.container-raport select:disabled {
+.container-raport .column-input select:disabled {
   position: relative;
   z-index: -1;
   width: 100px;

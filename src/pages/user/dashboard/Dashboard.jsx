@@ -88,13 +88,13 @@ const Dashboard = () => {
         <h3>Analytics</h3>
         <Link to="/eraport/mentor/reports">
           <h5>
-            Reports <i className="fa-solid fa-angles-right"></i>
+            Reports by column number<i className="fa-solid fa-angles-right"></i>
           </h5>
         </Link>
         <hr />
         <Link to="/eraport/mentor/reports/array">
           <h5>
-            Reports By Array <i className="fa-solid fa-angles-right"></i>
+            Reports by column tags<i className="fa-solid fa-angles-right"></i>
           </h5>
         </Link>
       </div>

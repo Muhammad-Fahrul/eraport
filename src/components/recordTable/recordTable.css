@@ -22,7 +22,6 @@
 .container-table-raport .table-raport thead th,
 .container-table-raport .table-raport tbody td {
   font-weight: normal;
-  padding: 0.3em;
   padding-inline: 0.5em;
   border: 1px solid #ddd;
 }
@@ -57,4 +56,8 @@ button.detail-raport-preview-btn {
   font-size: 18px;
   border: none;
   color: var(--primary-color);
+}
+
+.container-table-raport select {
+  width: 100%;
 }

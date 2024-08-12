@@ -6,6 +6,7 @@ import { Record } from './record/Record';
 import { RecordDetail } from './recordDetail/RecordDetail';
 
 import PropTypes from 'prop-types';
+import { recordSanitizer } from '../../utils/htmlGenerator';
 
 const RecordTable = ({ raportStatus, records }) => {
   const [detailRecord, setDetailRecord] = useState({});
@@ -24,43 +25,19 @@ const RecordTable = ({ raportStatus, records }) => {
     [records]
   );
 
-  const generateThead = (raports) => {
-    return Object.entries(raports[0])
-      .map(([keyword]) => {
-        if (
-          keyword !== '_id' &&
-          keyword !== 'studentId' &&
-          keyword !== 'raportId' &&
-          keyword !== 'updatedAt' &&
-          keyword !== '__v'
-        ) {
-          if (keyword === 'createdAt') {
-            return 'Tanggal';
-          }
-          return keyword;
-        }
-      })
-      .filter((key) => key !== undefined);
-  };
-
   let initialElemen;
 
   let raportThead = (
     <>
       <th>info</th>
-      {generateThead(records).map((item) => {
-        if (item.length > 5) {
-          return <th key={item}>{item}</th>;
-        }
-        return <th key={item}>{item}</th>;
+      {recordSanitizer(records[0]).map((item) => {
+        return <th key={item.keyword}>{item.keyword}</th>;
       })}
     </>
   );
 
   let raportsBody = records.map((record) => (
-    <tr key={record._id}>
-      <Record record={record} handleDetail={handleDetail} />
-    </tr>
+    <Record key={record._id} record={record} handleDetail={handleDetail} />
   ));
 
   return (
