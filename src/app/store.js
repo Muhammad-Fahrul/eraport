@@ -10,7 +10,7 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: import.meta.env.VITE_NODE_ENV !== 'production',
+  devTools: import.meta.env.VITE_NODE_ENV !== 'production' ? true : false,
 });
 
 setupListeners(store.dispatch);
