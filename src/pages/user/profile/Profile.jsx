@@ -22,7 +22,7 @@ const Profile = () => {
   } = useGetUserByUsernameQuery(username);
 
   const toRecords = (raportId) => {
-    navigate(`/users/${userDisplayed.username}/records/${raportId}`, {
+    navigate(`/eraport/students/${userDisplayed.username}/records/${raportId}`, {
       state: { from: location },
     });
   };
