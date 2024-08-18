@@ -20,11 +20,14 @@ const RaportGroup = ({ raportData }) => {
         {raportData.raportName} - {raportData.columnName}
       </h3>
       <select onChange={handleValueChange} value={selectedValue}>
-        {raportData.columnAnalytics.map((analytics) => (
-          <option key={analytics.columnValue} value={analytics.columnValue}>
-            {analytics.columnValue}
-          </option>
-        ))}
+        {[...raportData.columnAnalytics]
+          .slice() // Create a shallow copy
+          .sort((a, b) => a.columnValue - b.columnValue)
+          .map((analytics) => (
+            <option key={analytics.columnValue} value={analytics.columnValue}>
+              {analytics.columnValue}
+            </option>
+          ))}
       </select>
       <div className="table-container">
         <table>
