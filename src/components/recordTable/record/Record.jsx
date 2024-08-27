@@ -26,12 +26,12 @@ const Record = ({ record, handleDetail }) => {
             {Array.isArray(value) ? (
               <select disabled>
                 <option value={value[0]}>
-                  {value[0].length > 7
+                  {value[0]?.length > 7
                     ? `${value[0].slice(0, 7)}...`
                     : value[0]}
                 </option>
               </select>
-            ) : value.length > 10 ? (
+            ) : value?.length > 10 ? (
               value.slice(0, 10)
             ) : (
               value

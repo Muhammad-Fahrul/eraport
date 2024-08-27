@@ -55,11 +55,17 @@
   overflow-x: scroll;
 }
 
+.report-group th:first-child,
+.report-group td:first-child {
+  text-align: start;
+}
+
 .report-group th,
 .report-group td {
   padding: 12px;
   text-align: left;
   border: 1px solid #ddd;
+  text-align: center;
 }
 
 .report-group th {
