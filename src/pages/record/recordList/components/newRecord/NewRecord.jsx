@@ -21,6 +21,7 @@ const NewRecord = ({
   const handleChange = (name, value, type) => {
     setInput((prevInputs) => {
       if (type === 'checkbox') {
+        console.log(prevInputs[name])
         const currentValues = prevInputs[name] || [];
         const updatedValues = currentValues.includes(value)
           ? currentValues.filter((item) => item !== value)

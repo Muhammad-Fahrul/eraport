@@ -24,7 +24,7 @@ const Record = ({ record, handleDetail }) => {
         return (
           <td key={value + keyword}>
             {Array.isArray(value) ? (
-              <select disabled>
+              <select>
                 <option value={value[0]}>
                   {value[0]?.length > 7
                     ? `${value[0].slice(0, 7)}...`
