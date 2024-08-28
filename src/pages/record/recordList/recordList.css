@@ -20,3 +20,7 @@
 .container-raport .top .username span {
   color: #645bff;
 }
+
+.container-raport .students-page-btn {
+  padding: 0.2em;
+}

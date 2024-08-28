@@ -1,6 +1,6 @@
 import './recordList.css';
 
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 
 import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth.js';
@@ -75,7 +75,18 @@ const RecordList = () => {
           </h1>
           {recordNameEl}
         </div>
-        <Back previousPath={previousPath} />
+        <Back
+          classIcon={'fa-solid fa-arrow-left'}
+          previousPath={previousPath}
+        />
+        {currentUser.role === 'mentor' && (
+          <Link to="/eraport/mentor/students">
+            <Back
+              classIcon={'fa-solid fa-users-line'}
+              previousPath={previousPath}
+            />
+          </Link>
+        )}
       </div>
 
       {recordsEl}
