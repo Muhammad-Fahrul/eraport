@@ -81,10 +81,7 @@ const RecordList = () => {
         />
         {currentUser.role === 'mentor' && (
           <Link to="/eraport/mentor/students">
-            <Back
-              classIcon={'fa-solid fa-users-line'}
-              previousPath={previousPath}
-            />
+            <Back classIcon={'fa-solid fa-users'} previousPath={previousPath} />
           </Link>
         )}
       </div>

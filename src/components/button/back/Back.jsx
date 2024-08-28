@@ -10,6 +10,8 @@ const Back = ({ classIcon, previousPath }) => {
       onClick={() => navigate(previousPath, { replace: true })}
     >
       <i className={classIcon}></i>
+      {/* <div>
+      </div> */}
     </button>
   );
 };

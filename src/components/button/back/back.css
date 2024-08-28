@@ -10,3 +10,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.back i {
+  margin-right: 1px;
+}
