@@ -11,7 +11,7 @@ const RaportGroup = ({ raportData }) => {
   };
 
   const selectedAnalytics = raportData.columnAnalytics.find(
-    (analytics) => analytics.columnValue === selectedValue
+    (analytics) => Number(analytics.columnValue) === Number(selectedValue)
   );
 
   return (

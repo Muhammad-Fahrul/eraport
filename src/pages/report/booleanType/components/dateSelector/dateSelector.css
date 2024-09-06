@@ -1,0 +1,54 @@
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px; /* Add spacing between elements */
+  padding-inline: 1em;
+  padding-block: 0.5em;
+  background-color: #f7f7f7; /* Light background to distinguish it */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.filter-section label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#month-select,
+#year-select {
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+#month-select:focus,
+#year-select:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none;
+}
+
+#month-select:hover,
+#year-select:hover {
+  border-color: #007bff; /* Add hover effect */
+}
+
+@media (max-width: 375px) {
+  .filter-section {
+    flex-direction: column; /* Stack the elements on smaller screens */
+    align-items: flex-start;
+  }
+
+  .filter-section label {
+    margin-bottom: 5px;
+  }
+
+  #month-select,
+  #year-select {
+    width: 100%; /* Full width for dropdowns on small screens */
+  }
+}

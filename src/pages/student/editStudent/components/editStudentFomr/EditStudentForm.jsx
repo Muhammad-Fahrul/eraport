@@ -9,6 +9,7 @@ import { NewRaportRelation } from '../newRaportRelation/NewRaportRelation';
 import useAuth from '../../../../../hooks/useAuth';
 import Back from '../../../../../components/button/back/Back';
 import Loader from '../../../../../components/loader/Loader';
+import StreakDisplay from '../../../../user/profile/components/StreakComponent';
 
 const EditStudentForm = ({ student }) => {
   const authUser = useAuth();
@@ -105,25 +106,35 @@ const EditStudentForm = ({ student }) => {
       {((student.role === 'student' &&
         authUser.username === student.username) ||
         (authUser.isMentor && student.username !== authUser.username)) && (
-        <div className="books">
-          <div className="title">
-            <h3>Raports</h3>
-            {authUser.isMentor && (
-              <button onClick={() => setScreen(true)}>
-                <i className="fa-solid fa-plus"></i>
-              </button>
-            )}
+        <>
+          <StreakDisplay
+            streakCount={student.currentStreakCount || 0}
+            lastPracticeDate={student.lastPracticeDate || new Date(0)}
+          />
+          <div className="books">
+            <div className="title">
+              <h3>Raports</h3>
+              {authUser.isMentor && (
+                <button onClick={() => setScreen(true)}>
+                  <i className="fa-solid fa-plus"></i>
+                </button>
+              )}
+            </div>
+
+            <ul>
+              {student.raportIdsStudent.map((raport) => {
+                return (
+                  <li
+                    key={raport._id}
+                    onClick={() => toRecords(raport.raportId)}
+                  >
+                    <h4>{raport.raportName}</h4>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <ul>
-            {student.raportIdsStudent.map((raport) => {
-              return (
-                <li key={raport._id} onClick={() => toRecords(raport.raportId)}>
-                  <h4>{raport.raportName}</h4>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        </>
       )}
     </div>
   );

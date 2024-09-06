@@ -7,6 +7,7 @@ import Loader from '../../../components/loader/Loader';
 
 import { useGetUserByUsernameQuery } from '../redux/userApiSlice';
 import useAuth from '../../../hooks/useAuth';
+import StreakDisplay from './components/StreakComponent';
 const Profile = () => {
   const navigate = useNavigate();
   const { username } = useAuth();
@@ -22,9 +23,12 @@ const Profile = () => {
   } = useGetUserByUsernameQuery(username);
 
   const toRecords = (raportId) => {
-    navigate(`/eraport/students/${userDisplayed.username}/records/${raportId}`, {
-      state: { from: location },
-    });
+    navigate(
+      `/eraport/students/${userDisplayed.username}/records/${raportId}`,
+      {
+        state: { from: location },
+      }
+    );
   };
 
   let content;
@@ -83,24 +87,32 @@ const Profile = () => {
         </div>
         {content}
       </div>
-      {userDisplayed.role === 'student' &&
-        userDisplayed.raportIdsStudent.length && (
-          <div className="books">
-            <h3>Raports</h3>
-            <ul>
-              {userDisplayed.raportIdsStudent.map((raport) => {
-                return (
-                  <li
-                    key={raport._id}
-                    onClick={() => toRecords(raport.raportId)}
-                  >
-                    <h4>{raport.raportName}</h4>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+      {userDisplayed.role === 'student' && (
+        <>
+          <StreakDisplay
+            streakCount={userDisplayed.currentStreakCount || 0}
+            lastPracticeDate={userDisplayed.lastPracticeDate || 0}
+          />
+
+          {userDisplayed.raportIdsStudent.length && (
+            <div className="books">
+              <h3>Raports</h3>
+              <ul>
+                {userDisplayed.raportIdsStudent.map((raport) => {
+                  return (
+                    <li
+                      key={raport._id}
+                      onClick={() => toRecords(raport.raportId)}
+                    >
+                      <h4>{raport.raportName}</h4>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

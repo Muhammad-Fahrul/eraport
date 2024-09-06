@@ -1,3 +1,9 @@
+.container-user-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .container-user-profile .wrapper {
   position: relative;
   width: 100%;

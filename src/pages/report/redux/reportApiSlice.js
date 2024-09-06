@@ -5,8 +5,8 @@ const RAPORT_URL = '/api/analysis';
 export const raportApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getReports: builder.query({
-      query: () => ({
-        url: `${RAPORT_URL}`,
+      query: ({ month, year }) => ({
+        url: `${RAPORT_URL}?month=${month}&year=${year}`,
         validateStatus: (response, result) => {
           return response.status === 200 && !result.isError;
         },
