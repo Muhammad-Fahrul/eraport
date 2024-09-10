@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Loader from '../../../components/loader/Loader.jsx';
-
 import { useLoginMutation } from '../redux/authApiSlice.js';
 import { setCredentials } from '../redux/authSlice.js';
 
@@ -23,11 +21,17 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || '/eraport';
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isSuccess }] = useLoginMutation();
 
   useEffect(() => {
     setErrMsg('');
   }, [username, password]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(from, { replace: true });
+    }
+  }, [isSuccess, navigate, from]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -37,7 +41,6 @@ const Login = () => {
         password,
       }).unwrap();
       dispatch(setCredentials(data));
-      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       if (!err.status) {
@@ -56,8 +59,6 @@ const Login = () => {
   const errClass = errMsg ? 'errmsg' : 'offscreen';
 
   let content;
-
-  if (isLoading) content = <Loader />;
 
   content = (
     <div className="container-login">
@@ -94,7 +95,9 @@ const Login = () => {
           <span>Password</span>
         </div>
 
-        <button className="enter">Login</button>
+        <button className="enter" disabled={isLoading}>
+          {isLoading ? 'loading...' : 'Login'}
+        </button>
       </form>
     </div>
   );

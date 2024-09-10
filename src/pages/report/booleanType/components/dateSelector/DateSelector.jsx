@@ -1,4 +1,6 @@
 import './dateSelector.css';
+import PropTypes from 'prop-types';
+
 // Store both the month name and its index
 const months = [
   { name: 'January', index: 1 },
@@ -16,7 +18,7 @@ const months = [
 ];
 
 const currentYear = new Date().getFullYear();
-const years = Array.from({ length: 10 }, (_, i) => currentYear - i); // Last 10 years
+const years = Array.from({ length: 5 }, (_, i) => currentYear - i); // Last 10 years
 const DateSelector = ({
   selectedMonth,
   selectedYear,
@@ -44,6 +46,13 @@ const DateSelector = ({
       </select>
     </div>
   );
+};
+
+DateSelector.propTypes = {
+  selectedMonth: PropTypes.string.isRequired,
+  selectedYear: PropTypes.string.isRequired,
+  onMonthChange: PropTypes.func.isRequired,
+  onYearChange: PropTypes.func.isRequired,
 };
 
 export default DateSelector;

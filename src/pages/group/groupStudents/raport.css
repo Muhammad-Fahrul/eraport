@@ -1,0 +1,93 @@
+.container-raport .close-btn {
+  color: white;
+  background-color: rgb(252, 64, 64);
+}
+
+.container-raport .add-new {
+  color: white;
+  width: 30px;
+  height: 30px;
+  padding: 0.3em;
+  border-radius: 100px;
+  background-color: var(--primary-color);
+}
+
+.container-raport .container-raport-group {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(19, 18, 18, 0.384);
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.container-raport .group-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-raport .group-stds {
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-raport .container-raport-group .group-forms {
+  margin-top: 1em;
+  padding: 1em;
+  width: 80%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.container-raport .container-raport-group .group-forms .form-add {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.container-raport .container-raport-group .group-forms .students {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.added-stds {
+  display: flex;
+  gap: 0.2em;
+  flex-wrap: wrap;
+}
+
+.added-std {
+  width: max-content;
+  border-radius: 100px;
+  border: 2px solid black;
+  padding: 0.2em;
+}
+
+.container-raport .form-search {
+  position: relative;
+}
+
+.container-raport .form-search .search-icon-container {
+  position: absolute;
+  top: 1px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  padding-left: 0.6em;
+  height: 100%;
+}
+
+.container-raport .form-search input {
+  padding: 0.5em 1em 0.5em 3em;
+  border-radius: 50px;
+  border: 1px solid rgba(22, 22, 22, 0.507);
+  width: 100%;
+  font-size: 1rem;
+}

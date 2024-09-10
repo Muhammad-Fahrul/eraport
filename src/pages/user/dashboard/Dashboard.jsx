@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import NewRaport from './components/Raport/newRaport/NewRaport.jsx';
 import NewCollaborator from './components/newCollaborator/NewCollaborator.jsx';
 import { useGetCollabsByMentorQuery } from '../redux/collaboratorApiSlice.js';
+import NewGroupStudent from './components/newGroupStudent/NewGroupStudent.jsx';
+import { useGetGroupsQuery } from '../../student/redux/studentApiSlice.js';
 
 const Dashboard = () => {
   const { data, isSuccess, isLoading, isError, error } =
@@ -16,16 +18,26 @@ const Dashboard = () => {
     isLoading: iLCollabs,
   } = useGetCollabsByMentorQuery();
 
+  const {
+    data: groupsStudent,
+    isSuccess: iSG,
+    isLoading: iLG,
+  } = useGetGroupsQuery();
+
   let raportsEl;
 
   let collabsEl;
 
-  if (isLoading || iLCollabs) {
+  let groupsEl;
+
+  if (isLoading || iLCollabs || iLG) {
     raportsEl = <p>Loading...</p>;
     collabsEl = <p>Loading...</p>;
-  } else if (isSuccess || iSCollabs) {
+    groupsEl = <p>Loading...</p>;
+  } else if (isSuccess || iSCollabs || iSG) {
     const { raports } = data;
     const { collaborators } = collabs;
+    const { groups } = groupsStudent;
     raportsEl = raports.length ? (
       raports.map((raport) => {
         return (
@@ -56,6 +68,22 @@ const Dashboard = () => {
     ) : (
       <h4>Tidak ada collaborator</h4>
     );
+
+    groupsEl = groups.length ? (
+      groups.map((group) => {
+        return (
+          <li key={group._id}>
+            <Link to={`/eraport/mentor/group/${group._id}`}>
+              <div className="valid">
+                <h4>{group.groupName}</h4>
+              </div>
+            </Link>
+          </li>
+        );
+      })
+    ) : (
+      <h4>Tidak ada Group</h4>
+    );
   } else if (isError) {
     raportsEl = <p>{error.data.message}</p>;
   }
@@ -82,6 +110,13 @@ const Dashboard = () => {
         <div className="collabs">
           <h3>Collaborators</h3>
           <ul>{collabsEl}</ul>
+        </div>
+      </div>
+      <div>
+        <NewGroupStudent />
+        <div className="collabs">
+          <h3>Groups</h3>
+          <ul className="groups">{groupsEl}</ul>
         </div>
       </div>
       <div>

@@ -8,16 +8,17 @@ import { NewStudent } from './components/newStudent/NewStudent.jsx';
 import Loader from '../../../components/loader/Loader.jsx';
 import Error from '../../../components/error/Error.jsx';
 
-import { useGetStudentsByMentorIdQuery } from '../redux/studentApiSlice.js';
-import useAuth from '../../../hooks/useAuth.js';
+import {
+  useGetGroupsQuery,
+  useGetStudentsByMentorIdQuery,
+} from '../redux/studentApiSlice.js';
 import NewStudents from './components/newStudents/NewStudents.jsx';
 
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
   const [screen2, setScreen2] = useState(true);
+  const [stdsByGroupId, setStdsByGroupId] = useState('');
   const [searchName, setSearchName] = useState('');
-
-  const authUser = useAuth();
 
   const { data, isSuccess, isLoading, isError, error } =
     useGetStudentsByMentorIdQuery('studentList', {
@@ -25,6 +26,12 @@ const StudentList = () => {
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true,
     });
+
+  const {
+    data: allGroup,
+    isSuccess: iSG,
+    isLoading: iLG,
+  } = useGetGroupsQuery();
 
   const handleClose = (e) => {
     if (e.target.className === 'container-student-new') {
@@ -35,36 +42,25 @@ const StudentList = () => {
 
   let content;
 
-  if (isLoading) {
+  let groupNamesEl;
+
+  if (isLoading || iLG) {
     return <Loader />;
-  } else if (isSuccess) {
+  } else if (isSuccess || iSG) {
     const { ids, entities } = data;
+    const { groups } = allGroup;
 
-    let filteredIds;
+    const stdIdsToRemove = groups
+      .filter((g) => g._id === stdsByGroupId)[0]
+      ?.students.map((s) => s.id);
 
-    let filteredEntities;
+    let filteredEntities = stdIdsToRemove?.length
+      ? Object.values(entities).filter((s) => stdIdsToRemove.includes(s._id))
+      : Object.values(entities);
 
-    if (authUser.isStudent) {
-      const authUserId = Object.values(entities).find(
-        (e) =>
-          e.username.toLocaleLowerCase() ===
-          authUser.username.toLocaleLowerCase()
-      )?.id;
+    let filteredIds = ids;
 
-      filteredEntities = Object.values(entities).filter(
-        (e) =>
-          e.username.toLocaleLowerCase() !==
-          authUser.username.toLocaleLowerCase()
-      );
-
-      filteredIds = ids.filter((studentId) => studentId !== authUserId);
-    } else {
-      filteredEntities = entities;
-
-      filteredIds = ids;
-    }
-
-    let keysSearch = Object.values(filteredEntities).map((student) => {
+    let keysSearch = filteredEntities.map((student) => {
       if (!searchName.length) {
         return student.id;
       } else if (
@@ -82,6 +78,16 @@ const StudentList = () => {
         return filteredIds.filter((id) => id === keyId)[0];
       });
 
+    groupNamesEl = groups.map((g) => (
+      <li
+        onClick={() => setStdsByGroupId(g._id)}
+        className={`group-info ${stdsByGroupId === g._id ? 'active' : ''}`}
+        key={g._id}
+      >
+        {g.groupName}
+      </li>
+    ));
+
     content = searchedIds.length ? (
       searchedIds.map((studentId) => (
         <Student key={studentId} studentId={studentId} />
@@ -97,12 +103,14 @@ const StudentList = () => {
     <div className="container-students">
       <div className="title">
         <h3>STUDENTS</h3>
-        {authUser.isMentor && (
-          <button onClick={() => setScreen(true)}>
-            <i className="fa-solid fa-plus"></i>
-          </button>
-        )}
+        <button onClick={() => setScreen(true)}>
+          <i className="fa-solid fa-plus"></i>
+        </button>
+        <button onClick={() => setStdsByGroupId('')}>
+          <i className="fa-solid fa-remove"></i>
+        </button>
       </div>
+      <ul className="group-names">{groupNamesEl}</ul>
       <form className="form-search">
         <span className="search-icon-container">
           <i className="fa-solid fa-magnifying-glass"></i>

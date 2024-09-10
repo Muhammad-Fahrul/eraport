@@ -58,6 +58,40 @@ export const studentApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Student'],
     }),
+    addGroup: builder.mutation({
+      query: (formData) => ({
+        url: `${STUDENT_URL}/group`,
+        method: 'POST',
+        body: formData,
+      }),
+      invalidatesTags: ['Group'],
+    }),
+    getGroups: builder.query({
+      query: () => ({
+        url: `${STUDENT_URL}/group`,
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+      providesTags: [{ type: 'Group', id: 'LIST' }],
+    }),
+    getGroupById: builder.query({
+      query: (id) => ({
+        url: `${STUDENT_URL}/group/${id}`,
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+      providesTags: ['Group'],
+    }),
+    addStudentsToGroup: builder.mutation({
+      query: (formData) => ({
+        url: `${STUDENT_URL}/group`,
+        method: 'PUT',
+        body: formData,
+      }),
+      invalidatesTags: ['Group'],
+    }),
   }),
 });
 
@@ -66,4 +100,8 @@ export const {
   useDeleteStudentMutation,
   useGetStudentsByMentorIdQuery,
   useAddStudentsMutation,
+  useAddGroupMutation,
+  useGetGroupsQuery,
+  useGetGroupByIdQuery,
+  useAddStudentsToGroupMutation,
 } = studentApiSlice;

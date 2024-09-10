@@ -20,6 +20,7 @@ const NotFound = lazyLoad('pages/public/notFound/NotFound');
 const Register = lazyLoad('pages/auth/register/Register');
 const Login = lazyLoad('pages/auth/login/Login');
 import { loader as loginLoader } from './pages/auth/loader.js';
+import GroupStudents from './pages/group/groupStudents/GroupStudents.jsx';
 
 const UserList = lazyLoad('pages/user/userList/UserList');
 const User = lazyLoad('pages/user/user/User');
@@ -63,6 +64,7 @@ const router = createBrowserRouter(
 
           <Route path="mentor" element={<RequireAuth roles={[ROLES.mentor]} />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="group/:groupId" element={<GroupStudents />} />
             <Route path="reports" element={<BooleanType />} />
             <Route path="reports/array" element={<ArrayType />} />
             <Route path="raports/:raportId" element={<Raport />} />
