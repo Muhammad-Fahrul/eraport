@@ -17,7 +17,9 @@ import NewStudents from './components/newStudents/NewStudents.jsx';
 const StudentList = () => {
   const [screen, setScreen] = useState(false);
   const [screen2, setScreen2] = useState(true);
-  const [stdsByGroupId, setStdsByGroupId] = useState('');
+  const [stdsByGroupId, setStdsByGroupId] = useState(
+    JSON.parse(localStorage.getItem('groupId'))
+  );
   const [searchName, setSearchName] = useState('');
 
   const { data, isSuccess, isLoading, isError, error } =
@@ -38,6 +40,12 @@ const StudentList = () => {
       setScreen(false);
       setScreen2(false);
     }
+  };
+
+  const handleSetGroupId = (groupId) => {
+    localStorage.setItem('groupId', JSON.stringify(groupId));
+
+    setStdsByGroupId(groupId);
   };
 
   let content;
@@ -80,7 +88,7 @@ const StudentList = () => {
 
     groupNamesEl = groups.map((g) => (
       <li
-        onClick={() => setStdsByGroupId(g._id)}
+        onClick={() => handleSetGroupId(g._id)}
         className={`group-info ${stdsByGroupId === g._id ? 'active' : ''}`}
         key={g._id}
       >
@@ -106,11 +114,13 @@ const StudentList = () => {
         <button onClick={() => setScreen(true)}>
           <i className="fa-solid fa-plus"></i>
         </button>
+      </div>
+      <ul className="group-names">
+        {groupNamesEl}
         <button onClick={() => setStdsByGroupId('')}>
           <i className="fa-solid fa-remove"></i>
         </button>
-      </div>
-      <ul className="group-names">{groupNamesEl}</ul>
+      </ul>
       <form className="form-search">
         <span className="search-icon-container">
           <i className="fa-solid fa-magnifying-glass"></i>

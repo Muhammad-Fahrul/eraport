@@ -92,6 +92,14 @@ export const studentApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Group'],
     }),
+    getStudentsByRaportId: builder.query({
+      query: (raportId) => ({
+        url: `${STUDENT_URL}/raport/${raportId}`,
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+    }),
   }),
 });
 
