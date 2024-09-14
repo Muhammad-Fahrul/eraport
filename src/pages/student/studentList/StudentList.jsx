@@ -115,12 +115,15 @@ const StudentList = () => {
           <i className="fa-solid fa-plus"></i>
         </button>
       </div>
-      <ul className="group-names">
-        {groupNamesEl}
-        <button onClick={() => setStdsByGroupId('')}>
-          <i className="fa-solid fa-remove"></i>
-        </button>
-      </ul>
+      <div className="filter-by-group">
+        <h5>Students by group</h5>
+        <ul className="group-names">
+          {groupNamesEl}
+          <button onClick={() => setStdsByGroupId('')}>
+            <i className="fa-solid fa-remove"></i>
+          </button>
+        </ul>
+      </div>
       <form className="form-search">
         <span className="search-icon-container">
           <i className="fa-solid fa-magnifying-glass"></i>

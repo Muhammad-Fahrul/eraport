@@ -4,6 +4,14 @@
   padding-bottom: 0.5em;
 }
 
+.container-students .filter-by-group {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 0.5em;
+  padding-bottom: 0;
+  margin-bottom: 1em;
+}
+
 .container-students .title button {
   display: flex;
   align-items: center;
